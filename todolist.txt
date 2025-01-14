@@ -1,0 +1,31 @@
+Vamos a crear un API usando fast-endpoint para gestionar usuarios, los requerimientos van a ser los siguientes:
+
+1 Fast-endpoint
+2 Fluent Validation
+3 EntityFramework Core
+4 Mapperly
+5 Xunit/AutoFixture/AutoMock
+6 Postman para probar los endpoint del API
+7 Seguridad con JWT
+8 Correcto logueo de las acciones en el sistema
+
+
+Orden sugerido
+
+1 Crear Repositorio                                                                                                             X
+2 Crear la solucion base con su estructura de proyectos                                                                         X
+3 Crear un endpoint para listar usuarios(usando mock)
+4 Definir las clases del dominio(Principalmente la que va a ser usada por identity para la autenticacion)                       X
+5 Realizar la configuracion de las entidades del dominio(usando IEntityTypeConfiguration)
+6 Implementar la autenticacion/autorizacion
+7 Cambiar el mock del enpoint implementado por la conexion con la base de datos
+
+
+.Api --> Controllers
+.Application --> Interfaces and Services
+.Domain --> Objects
+.Infrastructure --> Repositories and DB
+
+
+
+Package and tools for the proyect
