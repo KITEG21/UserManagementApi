@@ -13,38 +13,46 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace FullWebApi.Application.Services
+namespace FullWebApi.Application.Services;
+
+public class UserServices : IUserServices
 {
-    public class UserServices : IUserServices
-    {
-        private readonly AppDBContext _context;
-        public UserServices(AppDBContext context)
-        {
-            _context = context;
-        }
+  private readonly AppDBContext _context;
+  public UserServices(AppDBContext context)
+  {
+    _context = context;
+  }
 
-        public async Task<List<User>?> GetAllUsers(UserDto req)
-        {
-           var users = await _context.Users.ToListAsync(); 
+  public async Task<List<User>?> GetAllUsers()
+  {
+    var users = await _context.Users.ToListAsync(); 
            
-           if(users == null){
-             return null;
-            }   
-            return users;
-        }
+    if(users == null){
+      return null;
+    }   
+  return users;
+  }
 
-        public async Task<Either<UserDto, object>> SignUpUser(UserDto req)
-        {    
-            User newUser = new User
-            {
-              Name = req.Name,
-              Email = req.Email,
-              Password = req.Password
-            };
+  public async Task<UserDto> SignUpUser(UserDto req)
+  {    
+    //Creation of new user for the DB
+    User newUser = new User
+    {
+      Name = req.Name,
+      Email = req.Email,
+      Password = req.Password
+    };
 
-            await _context.Users.AddAsync(newUser);
-            await _context.SaveChangesAsync();     
-            return newUser;            
-        }
-    }
+    //Saving the newUser into DB
+    await _context.Users.AddAsync(newUser);
+    await _context.SaveChangesAsync();     
+            
+    //Creating a userDto to return the info
+    return new UserDto()
+    {
+      Name = newUser.Name,
+      Email = newUser.Email,
+      Password = newUser.Password
+    };            
+  }
 }

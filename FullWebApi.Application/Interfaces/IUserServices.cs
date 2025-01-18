@@ -8,11 +8,10 @@ using FullWebApi.Domain.Models;
 using FluentValidation;
 using LanguageExt;
 
-namespace FullWebApi.Application.Interfaces
-{
+namespace FullWebApi.Application.Interfaces;
+
     public interface IUserServices
     {
-        public Task<List<User>?> GetAllUsers(UserDto req);
-        public Task<Either<UserDto, object>> SignUpUser(UserDto user);
+        public Task<List<User>?> GetAllUsers();
+        public Task<UserDto> SignUpUser(UserDto req);
     }
-}

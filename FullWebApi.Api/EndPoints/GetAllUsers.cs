@@ -29,7 +29,7 @@ namespace FullWebApi.Api.EndPoints
 
         public override async Task HandleAsync(UserDto req, CancellationToken ct)
         {
-            var users = await _userServices.GetAllUsers(req);
+            var users = await _userServices.GetAllUsers();
             await SendOkAsync(users, cancellation: ct);
         }
     }
