@@ -491,6 +491,14 @@
           }
         }
       },
+      "Riok.Mapperly/4.1.1": {
+        "runtime": {
+          "lib/netstandard2.0/Riok.Mapperly.Abstractions.dll": {
+            "assemblyVersion": "4.1.1.0",
+            "fileVersion": "4.1.1.0"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/6.6.2": {
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "6.0.5",
@@ -796,7 +804,8 @@
           "FastEndpoints": "5.33.0",
           "FullWebApi.Domain": "1.0.0",
           "FullWebApi.Infrastructure": "1.0.0",
-          "LanguageExt.Core": "4.4.9"
+          "LanguageExt.Core": "4.4.9",
+          "Riok.Mapperly": "4.1.1"
         },
         "runtime": {
           "FullWebApi.Application.dll": {
@@ -1095,6 +1104,13 @@
       "sha512": "sha512-GDXiMS9peEdjSCU/rfgyHruio7q6tYuywGaktqEi6UPQ6ILechp3fVVX+dHXkIXt4nklCBzYVWkzFrSL9ubKUA==",
       "path": "npgsql.entityframeworkcore.postgresql/8.0.0",
       "hashPath": "npgsql.entityframeworkcore.postgresql.8.0.0.nupkg.sha512"
+    },
+    "Riok.Mapperly/4.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SnLiZuBw4d/yMoyM//Qdz9N5pPNx+LZxOMSb9rk3Xdd3CZ9WTlw6vVF1mwD1Y/g+sMgB96j8V58go7lJOFNTng==",
+      "path": "riok.mapperly/4.1.1",
+      "hashPath": "riok.mapperly.4.1.1.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.6.2": {
       "type": "package",

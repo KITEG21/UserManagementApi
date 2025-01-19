@@ -8,6 +8,7 @@
   <ItemGroup>
     <PackageReference Include="FastEndpoints" Version="5.33.0" />
     <PackageReference Include="LanguageExt.Core" Version="4.4.9" />
+    <PackageReference Include="Riok.Mapperly" Version="4.1.1" />
   </ItemGroup>
 
   <PropertyGroup>

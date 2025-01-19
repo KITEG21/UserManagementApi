@@ -9,9 +9,8 @@ using FluentValidation;
 using LanguageExt;
 
 namespace FullWebApi.Application.Interfaces;
-
-    public interface IUserServices
-    {
-        public Task<List<User>?> GetAllUsers();
-        public Task<UserDto> SignUpUser(UserDto req);
-    }
+  public interface IUserServices
+  {
+    public Task<List<User>?> GetAllUsers();
+    public Task<UserDto> SignUpUser(UserDto req);
+  }

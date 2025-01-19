@@ -8,29 +8,28 @@ using FullWebApi.Domain.Dtos;
 using FullWebApi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace FullWebApi.Api.EndPoints
+namespace FullWebApi.Api.EndPoints;
+
+public class GetAllUsers : Endpoint<UserDto>
 {
-    public class GetAllUsers : Endpoint<UserDto>
-    {
+  private readonly AppDBContext _context;
+  private readonly IUserServices _userServices;
+  public GetAllUsers(AppDBContext context, IUserServices userServices)
+  {
+    _context = context;
+    _userServices = userServices;
+  }
 
-        private readonly AppDBContext _context;
-        private readonly IUserServices _userServices;
-        public GetAllUsers(AppDBContext context, IUserServices userServices)
-        {
-            _context = context;
-            _userServices = userServices;
-        }
+  public override void Configure()
+  {
+    Get("/api/user/users");
+    AllowAnonymous();
+  }
 
-        public override void Configure()
-        {
-            Get("/api/user/users");
-            AllowAnonymous();
-        }
+  public override async Task HandleAsync(UserDto req, CancellationToken ct)
+  {
+    var users = await _userServices.GetAllUsers();
+    await SendOkAsync(users, cancellation: ct);
+  }
 
-        public override async Task HandleAsync(UserDto req, CancellationToken ct)
-        {
-            var users = await _userServices.GetAllUsers();
-            await SendOkAsync(users, cancellation: ct);
-        }
-    }
 }
