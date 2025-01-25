@@ -7,10 +7,11 @@ using FullWebApi.Application.Interfaces;
 using FullWebApi.Domain.Models.Auth;
 using FullWebApi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 namespace FullWebApi.Api.EndPoints.Auth
 {
-    public class LoginEndpoint : Endpoint<LoginRequest, LoginResponse>
+    public class LoginEndpoint : Endpoint<LoginRequest>
     {
         private readonly ITokenServices _tokenServices;
         private readonly AppDBContext _context;
@@ -27,16 +28,26 @@ namespace FullWebApi.Api.EndPoints.Auth
         }
         public override async Task HandleAsync(LoginRequest req, CancellationToken ct)
         {
+            
             var user = await _context.AdminUsers.FirstOrDefaultAsync(x => x.Username == req.Username && x.Password == req.Password);
 
             if(user == null)
             {
-                await SendErrorsAsync();
+                var errorResponse = new 
+                {
+                    StatusCode = 401,
+                    Error = "Invalid credentials"
+                };
+
+
+                await SendAsync(errorResponse, 401, ct);
+                Log.Information("Login attempt failed: Invalid credentials. Username: {Username}, Password: {Password}", req.Username, req.Password);
                 return;
             }
 
             var token = _tokenServices.GenerateToken(req.Username, "Admin");
             await SendAsync(new LoginResponse {Token = token}, cancellation: ct);
+            Log.Information("User logged successfully. Username: {Username}", user.Username);
         }
     }
 }

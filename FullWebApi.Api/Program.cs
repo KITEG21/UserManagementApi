@@ -11,8 +11,17 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
 using FullWebApi.Domain.Models.Auth;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//Configure Logger
+Log.Logger = new LoggerConfiguration()
+.WriteTo.Console()
+.WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
+.CreateLogger();
+
+builder.Host.UseSerilog();
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 builder.Services.AddAuthentication(options =>

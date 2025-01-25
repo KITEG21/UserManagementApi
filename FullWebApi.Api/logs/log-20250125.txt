@@ -1,0 +1,61 @@
+2025-01-25 09:53:51.211 -05:00 [INF] Registered 5 endpoints in 160 milliseconds.
+2025-01-25 09:53:51.251 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 09:53:51.294 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 09:53:51.295 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 09:53:51.295 -05:00 [INF] Hosting environment: Development
+2025-01-25 09:53:51.296 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 09:55:03.866 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 62
+2025-01-25 09:55:03.897 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-01-25 09:55:04.435 -05:00 [INF] Executed DbCommand (30ms) [Parameters=[@__req_Username_0='?', @__req_Password_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0 AND a."Password" = @__req_Password_1
+LIMIT 1
+2025-01-25 09:55:04.498 -05:00 [INF] User logged successfully. Username: Kiteg
+2025-01-25 09:55:04.501 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-01-25 09:55:04.507 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 200 null application/json; charset=utf-8 642.3434ms
+2025-01-25 09:55:28.077 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 61
+2025-01-25 09:55:28.079 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-01-25 09:55:28.094 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__req_Username_0='?', @__req_Password_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0 AND a."Password" = @__req_Password_1
+LIMIT 1
+2025-01-25 09:55:28.096 -05:00 [INF] Login attempt failed: Invalid credentials. Username: Kite, Password: 0987654321
+2025-01-25 09:55:28.096 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-01-25 09:55:28.097 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 401 null null 20.7935ms
+2025-01-25 09:55:52.101 -05:00 [INF] Application is shutting down...
+2025-01-25 10:01:14.797 -05:00 [INF] Registered 5 endpoints in 139 milliseconds.
+2025-01-25 10:01:14.836 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 10:01:14.880 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 10:01:14.881 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 10:01:14.881 -05:00 [INF] Hosting environment: Development
+2025-01-25 10:01:14.882 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 10:01:24.385 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 61
+2025-01-25 10:01:24.426 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-01-25 10:01:24.912 -05:00 [INF] Executed DbCommand (27ms) [Parameters=[@__req_Username_0='?', @__req_Password_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0 AND a."Password" = @__req_Password_1
+LIMIT 1
+2025-01-25 10:01:24.923 -05:00 [INF] Login attempt failed: Invalid credentials. Username: Kite, Password: 0987654321
+2025-01-25 10:01:24.927 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-01-25 10:01:24.935 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 401 null null 551.3284ms
+2025-01-25 10:01:33.623 -05:00 [INF] Application is shutting down...
+2025-01-25 10:02:26.382 -05:00 [INF] Registered 5 endpoints in 144 milliseconds.
+2025-01-25 10:02:26.421 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 10:02:26.458 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 10:02:26.459 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 10:02:26.459 -05:00 [INF] Hosting environment: Development
+2025-01-25 10:02:26.460 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 10:02:29.911 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 61
+2025-01-25 10:02:29.937 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-01-25 10:02:30.433 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__req_Username_0='?', @__req_Password_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0 AND a."Password" = @__req_Password_1
+LIMIT 1
+2025-01-25 10:02:30.457 -05:00 [INF] Login attempt failed: Invalid credentials. Username: Kite, Password: 0987654321
+2025-01-25 10:02:30.461 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-01-25 10:02:30.467 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 401 null application/json; charset=utf-8 556.3602ms
+2025-01-25 10:02:36.443 -05:00 [INF] Application is shutting down...

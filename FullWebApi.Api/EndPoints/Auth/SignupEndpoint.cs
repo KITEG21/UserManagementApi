@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using FullWebApi.Domain.ModelsValidator;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Identity;
+using Serilog;
 
 
 namespace FullWebApi.Api.EndPoints.Auth;
@@ -44,9 +45,10 @@ public class SignUpEndpoint : Endpoint<SignUpRequest>
       var errorResponse = new
       {
         StatusCode = 409,
-        Errors = "Username already ocuppied"
+        Errors = "User already exist"
       };  
       await SendAsync(errorResponse, 409, ct);
+      Log.Information("SignUp attempt failed: User already exist. Username: {Username}, Email: {Email}", req.Username, req.Email);
       return;
     }
 
@@ -60,6 +62,7 @@ public class SignUpEndpoint : Endpoint<SignUpRequest>
       };
 
       await SendAsync(errorResponse, 400, ct);
+      Log.Information("SignUp attempt failed: Validation errors. Username: {Username}, Email: {Email}, Errors: {Errors}", req.Username, req.Email, errorMessages);
       return;
     }
 
@@ -78,5 +81,7 @@ public class SignUpEndpoint : Endpoint<SignUpRequest>
     // Generate JWT token
     var token = _tokenService.GenerateToken(adminUser.Username, "Admin");
     await SendAsync(new SignUpResponse { Token = token }, cancellation: ct);
+
+    Log.Information("New admin user signed up successfully");
  }
 }

@@ -29,12 +29,13 @@ public class GetAllUsers : EndpointWithoutRequest<List<UserDto>>
   public override async Task HandleAsync(CancellationToken ct)
   {
     var users = await _userServices.GetAllUsers();
-    if (users == null)
+    if (users == null || !users.Any())
     {
       await SendNotFoundAsync(cancellation: ct);
       return;
     }
-    await SendOkAsync(users, cancellation: ct);
+    
+    await SendOkAsync(users, ct);
   }
 
 }

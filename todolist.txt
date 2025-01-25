@@ -7,7 +7,7 @@ Vamos a crear un API usando fast-endpoint para gestionar usuarios, los requerimi
 5 Xunit/AutoFixture/AutoMock                                X
 6 Postman para probar los endpoint del API                  X
 7 Seguridad con JWT                                         X
-8 Correcto logueo de las acciones en el sistema
+8 Correcto logueo de las acciones en el sistema             X
 
 
 Orden sugerido
@@ -30,5 +30,3 @@ Orden sugerido
 
 Package and tools for the proyect
 
-
-add the rest of the fluent validations(adminUser)
