@@ -29,27 +29,35 @@ public class UserServices : IUserServices
     _mapper = mapper;
   }
 
-  public async Task<List<User>?> GetAllUsers()
+  public async Task<List<UserDto>?> GetAllUsers()
   {
     var users = await _context.Users.ToListAsync(); 
-           
+
+    var usersList = users.Select(user => _mapper.UserToUserDto(user)).ToList();
+
     if(users == null){
       return null;
     }   
-    return users;
+    return usersList;
   }
 
-  public async Task<UserDto> SignUpUser(UserDto req)
+    public async Task<User> GetUser(int id)
+    {
+      User? user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id) ?? throw new Exception("User not found");
+      return user;
+    }
+
+    public async Task<User> SignUpUser(User req)
   {    
     //Creation of new user for the DB
-    User newUser = _mapper.UserDtoToUser(req);
+    User newUser = req;
 
     //Saving the newUser into DB
     await _context.Users.AddAsync(newUser);
     await _context.SaveChangesAsync();     
             
     //Creating a userDto to return the info
-    return _mapper.UserToUserDto(newUser);
+    return newUser;
            
   }
 }

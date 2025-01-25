@@ -14,13 +14,12 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace FullWebApi.Api.EndPoints;
-
-public class UserSignup : Endpoint<UserDto>
+public class CreateUser : Endpoint<User>
 {
   private readonly AppDBContext _context;
   private readonly IUserServices _userServices;
 
-  public UserSignup(AppDBContext context, IUserServices userServices)
+  public CreateUser(AppDBContext context, IUserServices userServices)
   {
     _context = context;
     _userServices = userServices;
@@ -32,7 +31,7 @@ public class UserSignup : Endpoint<UserDto>
     AllowAnonymous();
   }
 
-  public override async Task HandleAsync(UserDto req, CancellationToken ct)
+  public override async Task HandleAsync(User req, CancellationToken ct)
   { 
     UserValidator userValidator = new();
     ValidationResult validationResult = userValidator.Validate(req);

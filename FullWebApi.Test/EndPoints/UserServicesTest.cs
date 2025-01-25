@@ -45,11 +45,13 @@ public class UserServicesTest
   public async Task SignUp_Should_Return_NewUser()
   {
     var newUserDto = _fixture.Create<UserDto>();
-    _mockUserServices.Setup(service => service.SignUpUser(newUserDto)).ReturnsAsync(newUserDto);
+    var newUser = _fixture.Create<User>();
+    
+    _mockUserServices.Setup(service => service.SignUpUser(newUserDto)).ReturnsAsync(newUser);
 
     var result = await _mockUserServices.Object.SignUpUser(newUserDto);
 
     Assert.NotNull(result);
-    Assert.Equal(newUserDto.Id, result.Id);
+    Assert.Equal(newUser.Id, result.Id);
   }
 }

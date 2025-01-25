@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FullWebApi.Api.EndPoints;
 
-public class GetAllUsers : Endpoint<UserDto>
+public class GetAllUsers : EndpointWithoutRequest<List<UserDto>>
 {
   private readonly AppDBContext _context;
   private readonly IUserServices _userServices;
@@ -23,12 +23,17 @@ public class GetAllUsers : Endpoint<UserDto>
   public override void Configure()
   {
     Get("/api/user/users");
-    AllowAnonymous();
+    Roles("Admin");
   }
 
-  public override async Task HandleAsync(UserDto req, CancellationToken ct)
+  public override async Task HandleAsync(CancellationToken ct)
   {
     var users = await _userServices.GetAllUsers();
+    if (users == null)
+    {
+      await SendNotFoundAsync(cancellation: ct);
+      return;
+    }
     await SendOkAsync(users, cancellation: ct);
   }
 

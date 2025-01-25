@@ -7,7 +7,7 @@ using FullWebApi.Domain.Dtos;
 using FullWebApi.Domain.Models;
 
 namespace FullWebApi.Domain.ModelsValidator;
-public class UserValidator : AbstractValidator<UserDto>
+public class UserValidator : AbstractValidator<User>
 {
   public UserValidator()
   {
