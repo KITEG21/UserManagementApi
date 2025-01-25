@@ -28,7 +28,7 @@ public class CreateUser : Endpoint<User>
   public override void Configure()
   {
     Post("/api/user/signup");
-    AllowAnonymous();
+    Roles("Admin");
   }
 
   public override async Task HandleAsync(User req, CancellationToken ct)

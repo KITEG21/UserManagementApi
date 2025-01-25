@@ -14,4 +14,6 @@ namespace FullWebApi.Application.Interfaces;
     public Task<List<UserDto>?> GetAllUsers();
     public Task<User> GetUser(int id);
     public Task<User> SignUpUser(User req);
+    public Task<bool> DeleteUser(int id);
+    public Task<User> UpdateUser(User user);
   }

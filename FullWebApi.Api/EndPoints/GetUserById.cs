@@ -23,7 +23,7 @@ public class GetUserById : Endpoint<UserDto>
   public override void Configure()
   {
     Get("api/user/{id}");
-    AllowAnonymous();
+    Roles("Admin");
   }
 
   public override async Task HandleAsync(UserDto req ,CancellationToken ct)

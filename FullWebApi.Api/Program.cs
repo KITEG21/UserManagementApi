@@ -17,9 +17,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Configure Logger
 Log.Logger = new LoggerConfiguration()
-.WriteTo.Console()
-.WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
-.CreateLogger();
+  .WriteTo.Console()
+  .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
+  .CreateLogger();
 
 builder.Host.UseSerilog();
 
@@ -64,6 +64,7 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
+app.UseHttpsRedirection();
 app.UseFastEndpoints();
 app.UseAuthentication();
 app.UseAuthorization();

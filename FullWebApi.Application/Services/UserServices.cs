@@ -57,7 +57,39 @@ public class UserServices : IUserServices
     await _context.SaveChangesAsync();     
             
     //Creating a userDto to return the info
-    return newUser;
-           
+    return newUser;         
   }
+
+// Delete user by ID
+  public async Task<bool> DeleteUser(int id)
+  {
+    var user = await _context.Users.FindAsync(id);
+    if (user == null)
+    {
+      return false;
+    }
+
+    _context.Users.Remove(user);
+    await _context.SaveChangesAsync();
+    return true;
+    }
+
+  // Update user details
+  public async Task<User> UpdateUser(User req)
+  {
+    var updatedUser = await _context.Users.FirstOrDefaultAsync(x=> x.Id == req.Id);
+   
+    if (updatedUser == null)
+    {
+      return null;
+    }
+
+   updatedUser.Name = req.Name;
+   updatedUser.Email = req.Email;
+   updatedUser.Password = req.Password;
+
+    await _context.SaveChangesAsync();
+    return updatedUser;
+  }  
+
 }

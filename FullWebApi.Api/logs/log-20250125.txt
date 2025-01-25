@@ -59,3 +59,706 @@ LIMIT 1
 2025-01-25 10:02:30.461 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
 2025-01-25 10:02:30.467 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 401 null application/json; charset=utf-8 556.3602ms
 2025-01-25 10:02:36.443 -05:00 [INF] Application is shutting down...
+2025-01-25 10:24:09.949 -05:00 [INF] Registered 5 endpoints in 167 milliseconds.
+2025-01-25 10:24:09.984 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 10:24:10.024 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 10:24:10.025 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 10:24:10.026 -05:00 [INF] Hosting environment: Development
+2025-01-25 10:24:10.027 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 10:24:23.936 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/41 - null null
+2025-01-25 10:24:23.950 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-25 10:24:23.966 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-01-25 10:24:23.968 -05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-25 10:24:23.970 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/41 - 401 0 null 34.7755ms
+2025-01-25 10:24:30.918 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 62
+2025-01-25 10:24:30.928 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-01-25 10:24:31.437 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__req_Username_0='?', @__req_Password_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0 AND a."Password" = @__req_Password_1
+LIMIT 1
+2025-01-25 10:24:31.493 -05:00 [INF] User logged successfully. Username: Kiteg
+2025-01-25 10:24:31.495 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-01-25 10:24:31.500 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 200 null application/json; charset=utf-8 582.8117ms
+2025-01-25 10:24:44.347 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/41 - null null
+2025-01-25 10:24:44.382 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-25 10:24:44.401 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-25 10:24:44.410 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-25 10:24:44.411 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/41 - 200 null application/json; charset=utf-8 64.4793ms
+2025-01-25 10:24:56.872 -05:00 [INF] Application is shutting down...
+2025-01-25 11:07:53.916 -05:00 [INF] Registered 7 endpoints in 231 milliseconds.
+2025-01-25 11:07:53.959 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 11:07:54.001 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 11:07:54.036 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 11:07:54.037 -05:00 [INF] Hosting environment: Development
+2025-01-25 11:07:54.037 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 11:08:11.213 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 61
+2025-01-25 11:08:11.234 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-25 11:08:11.257 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-01-25 11:08:11.904 -05:00 [INF] Executed DbCommand (31ms) [Parameters=[@__req_Username_0='?', @__req_Password_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0 AND a."Password" = @__req_Password_1
+LIMIT 1
+2025-01-25 11:08:11.930 -05:00 [INF] Login attempt failed: Invalid credentials. Username: Kitg, Password: 0987654321
+2025-01-25 11:08:11.934 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-01-25 11:08:11.940 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 401 null application/json; charset=utf-8 728.0485ms
+2025-01-25 11:08:15.258 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 62
+2025-01-25 11:08:15.261 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-01-25 11:08:15.285 -05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__req_Username_0='?', @__req_Password_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0 AND a."Password" = @__req_Password_1
+LIMIT 1
+2025-01-25 11:08:15.341 -05:00 [INF] User logged successfully. Username: Kiteg
+2025-01-25 11:08:15.342 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-01-25 11:08:15.342 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 200 null application/json; charset=utf-8 84.7527ms
+2025-01-25 11:08:27.425 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-25 11:08:27.461 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-25 11:08:27.520 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+2025-01-25 11:08:27.530 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-25 11:08:27.531 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 105.8486ms
+2025-01-25 11:11:44.915 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/41 - null null
+2025-01-25 11:11:44.920 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-25 11:11:44.931 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-25 11:11:44.932 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-25 11:11:44.933 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/41 - 200 null application/json; charset=utf-8 17.9762ms
+2025-01-25 11:12:44.343 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - application/json 61
+2025-01-25 11:12:44.346 -05:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:12:44.348 -05:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:12:44.348 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - 405 0 null 5.1757ms
+2025-01-25 11:12:55.207 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - application/json 61
+2025-01-25 11:12:55.210 -05:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:12:55.211 -05:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:12:55.212 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - 405 0 null 4.7005ms
+2025-01-25 11:13:13.072 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - application/json 78
+2025-01-25 11:13:13.076 -05:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:13:13.077 -05:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:13:13.077 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - 405 0 null 5.0893ms
+2025-01-25 11:13:41.117 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - application/json 61
+2025-01-25 11:13:41.120 -05:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:13:41.121 -05:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:13:41.121 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - 405 0 null 4.0715ms
+2025-01-25 11:13:46.144 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - application/json 61
+2025-01-25 11:13:46.146 -05:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:13:46.146 -05:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:13:46.146 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - 405 0 null 2.0538ms
+2025-01-25 11:13:58.113 -05:00 [INF] Application is shutting down...
+2025-01-25 11:14:44.871 -05:00 [INF] Registered 7 endpoints in 160 milliseconds.
+2025-01-25 11:14:44.914 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 11:14:44.964 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 11:14:44.965 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 11:14:44.965 -05:00 [INF] Hosting environment: Development
+2025-01-25 11:14:44.966 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 11:14:57.310 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - application/json 61
+2025-01-25 11:14:57.324 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-25 11:14:57.381 -05:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:14:57.383 -05:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:14:57.385 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - 405 0 null 75.3546ms
+2025-01-25 11:14:59.974 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - application/json 61
+2025-01-25 11:14:59.978 -05:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:14:59.979 -05:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:14:59.981 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - 405 0 null 7.4266ms
+2025-01-25 11:15:08.370 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - application/json 77
+2025-01-25 11:15:08.381 -05:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:15:08.384 -05:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:15:08.389 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - 405 0 null 18.3632ms
+2025-01-25 11:15:09.348 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - application/json 77
+2025-01-25 11:15:09.350 -05:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:15:09.351 -05:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:15:09.352 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - 405 0 null 3.3084ms
+2025-01-25 11:15:17.136 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-25 11:15:17.142 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-25 11:15:17.550 -05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+2025-01-25 11:15:17.616 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-25 11:15:17.619 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 483.2203ms
+2025-01-25 11:15:23.656 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-25 11:15:23.661 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-01-25 11:15:23.669 -05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-25 11:15:23.671 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 401 0 null 14.4734ms
+2025-01-25 11:16:00.288 -05:00 [INF] Application is shutting down...
+2025-01-25 11:17:57.640 -05:00 [INF] Registered 7 endpoints in 153 milliseconds.
+2025-01-25 11:17:57.680 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 11:17:57.720 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 11:17:57.721 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 11:17:57.721 -05:00 [INF] Hosting environment: Development
+2025-01-25 11:17:57.722 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 11:18:13.218 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/41 - null null
+2025-01-25 11:18:13.233 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-25 11:18:13.290 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-25 11:18:13.756 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-25 11:18:13.810 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-25 11:18:13.815 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/41 - 200 null application/json; charset=utf-8 597.3604ms
+2025-01-25 11:18:18.686 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-25 11:18:18.690 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-25 11:18:18.702 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-25 11:18:18.704 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-25 11:18:18.705 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 19.2469ms
+2025-01-25 11:18:41.516 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - application/json 77
+2025-01-25 11:18:41.522 -05:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:18:41.522 -05:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:18:41.524 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/updateUser/41 - 405 0 null 8.1903ms
+2025-01-25 11:19:59.035 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/deleteuser/id - application/json 23
+2025-01-25 11:19:59.036 -05:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:19:59.037 -05:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:19:59.037 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/deleteuser/id - 405 0 null 2.7506ms
+2025-01-25 11:20:07.266 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/deleteuser/id - application/json 25
+2025-01-25 11:20:07.267 -05:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:20:07.268 -05:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:20:07.268 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/deleteuser/id - 405 0 null 2.1421ms
+2025-01-25 11:20:08.278 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/deleteuser/id - application/json 25
+2025-01-25 11:20:08.279 -05:00 [INF] Executing endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:20:08.280 -05:00 [INF] Executed endpoint '405 HTTP Method Not Supported'
+2025-01-25 11:20:08.280 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/deleteuser/id - 405 0 null 2.0222ms
+2025-01-25 11:26:06.081 -05:00 [INF] Registered 7 endpoints in 148 milliseconds.
+2025-01-25 11:26:06.117 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 11:26:06.180 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 11:26:06.181 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 11:26:06.181 -05:00 [INF] Hosting environment: Development
+2025-01-25 11:26:06.182 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 11:26:22.984 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateUser/41 - application/json 61
+2025-01-25 11:26:22.997 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-25 11:26:23.052 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateUser/{id}'
+2025-01-25 11:26:23.545 -05:00 [INF] Executed DbCommand (24ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2025-01-25 11:26:23.587 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateUser/{id}'
+2025-01-25 11:26:23.588 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The instance of entity type 'User' cannot be tracked because another instance with the same key value for {'Id'} is already being tracked. When attaching existing entities, ensure that only one entity instance with a given key value is attached. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see the conflicting key values.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.ThrowIdentityConflict(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry, Boolean updateDuplicate)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.StartTracking(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState oldState, EntityState newState, Boolean acceptChanges, Boolean modifyProperties)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState entityState, Boolean acceptChanges, Boolean modifyProperties, Nullable`1 forceStateWhenUnknownKey, Nullable`1 fallbackState)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.PaintAction(EntityEntryGraphNode`1 node)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityEntryGraphIterator.TraverseGraph[TState](EntityEntryGraphNode`1 node, Func`2 handleNode)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.AttachGraph(InternalEntityEntry rootEntry, EntityState targetState, EntityState storeGeneratedWithKeySetTargetState, Boolean forceStateWhenUnknownKey)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.SetEntityState(InternalEntityEntry entry, EntityState entityState)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.Update(TEntity entity)
+   at FullWebApi.Application.Services.UserServices.UpdateUser(UserDto userDto) in c:\Users\Usuario\Documents\Backend\API\FullWebApi\FullWebApi.Application\Services\UserServices.cs:line 89
+   at FullWebApi.Api.EndPoints.UpdateUser.HandleAsync(UserDto req, CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\UpdateUser.cs:line 34
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-01-25 11:26:23.615 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateUser/41 - 500 null text/plain; charset=utf-8 632.0888ms
+2025-01-25 11:26:39.116 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateUser/41 - application/json 77
+2025-01-25 11:26:39.121 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateUser/{id}'
+2025-01-25 11:26:39.145 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2025-01-25 11:26:39.147 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateUser/{id}'
+2025-01-25 11:26:39.147 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The instance of entity type 'User' cannot be tracked because another instance with the same key value for {'Id'} is already being tracked. When attaching existing entities, ensure that only one entity instance with a given key value is attached. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see the conflicting key values.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.ThrowIdentityConflict(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry, Boolean updateDuplicate)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.StartTracking(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState oldState, EntityState newState, Boolean acceptChanges, Boolean modifyProperties)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState entityState, Boolean acceptChanges, Boolean modifyProperties, Nullable`1 forceStateWhenUnknownKey, Nullable`1 fallbackState)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.PaintAction(EntityEntryGraphNode`1 node)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityEntryGraphIterator.TraverseGraph[TState](EntityEntryGraphNode`1 node, Func`2 handleNode)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.AttachGraph(InternalEntityEntry rootEntry, EntityState targetState, EntityState storeGeneratedWithKeySetTargetState, Boolean forceStateWhenUnknownKey)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.SetEntityState(InternalEntityEntry entry, EntityState entityState)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.Update(TEntity entity)
+   at FullWebApi.Application.Services.UserServices.UpdateUser(UserDto userDto) in c:\Users\Usuario\Documents\Backend\API\FullWebApi\FullWebApi.Application\Services\UserServices.cs:line 89
+   at FullWebApi.Api.EndPoints.UpdateUser.HandleAsync(UserDto req, CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\UpdateUser.cs:line 34
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-01-25 11:26:39.154 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateUser/41 - 500 null text/plain; charset=utf-8 38.2242ms
+2025-01-25 11:27:24.889 -05:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/id - application/json 25
+2025-01-25 11:27:24.893 -05:00 [INF] Executing endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-01-25 11:27:24.910 -05:00 [INF] Executed endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-01-25 11:27:24.911 -05:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/id - 400 null application/problem+json; charset=utf-8 21.6729ms
+2025-01-25 11:27:35.824 -05:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/id - application/json 23
+2025-01-25 11:27:35.826 -05:00 [INF] Executing endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-01-25 11:27:35.827 -05:00 [INF] Executed endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-01-25 11:27:35.827 -05:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/id - 400 null application/problem+json; charset=utf-8 3.2532ms
+2025-01-25 11:27:41.343 -05:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/41 - application/json 23
+2025-01-25 11:27:41.346 -05:00 [INF] Executing endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-01-25 11:27:41.383 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2025-01-25 11:27:41.423 -05:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Users"
+WHERE "Id" = @p0;
+2025-01-25 11:27:41.431 -05:00 [INF] User deleted successfully. Id: 41
+2025-01-25 11:27:41.433 -05:00 [INF] Executed endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-01-25 11:27:41.433 -05:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/41 - 200 null application/json; charset=utf-8 89.9783ms
+2025-01-25 11:27:56.734 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-25 11:27:56.735 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-25 11:27:56.749 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+2025-01-25 11:27:56.752 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-25 11:27:56.753 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 19.4279ms
+2025-01-25 11:28:26.693 -05:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/41 - null null
+2025-01-25 11:28:26.694 -05:00 [INF] Executing endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-01-25 11:28:26.696 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2025-01-25 11:28:26.701 -05:00 [INF] Delete user failed attempt: The required user Id couldn't be found. Id: 41
+2025-01-25 11:28:26.701 -05:00 [INF] Executed endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-01-25 11:28:26.704 -05:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/41 - 404 null application/json; charset=utf-8 11.4018ms
+2025-01-25 11:28:31.679 -05:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/35 - null null
+2025-01-25 11:28:31.680 -05:00 [INF] Executing endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-01-25 11:28:31.682 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2025-01-25 11:28:31.685 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Users"
+WHERE "Id" = @p0;
+2025-01-25 11:28:31.686 -05:00 [INF] User deleted successfully. Id: 35
+2025-01-25 11:28:31.687 -05:00 [INF] Executed endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-01-25 11:28:31.687 -05:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/35 - 200 null application/json; charset=utf-8 8.6529ms
+2025-01-25 11:28:35.035 -05:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/36 - null null
+2025-01-25 11:28:35.039 -05:00 [INF] Executing endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-01-25 11:28:35.043 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2025-01-25 11:28:35.051 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Users"
+WHERE "Id" = @p0;
+2025-01-25 11:28:35.055 -05:00 [INF] User deleted successfully. Id: 36
+2025-01-25 11:28:35.056 -05:00 [INF] Executed endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-01-25 11:28:35.058 -05:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/36 - 200 null application/json; charset=utf-8 22.5912ms
+2025-01-25 11:28:38.223 -05:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/37 - null null
+2025-01-25 11:28:38.224 -05:00 [INF] Executing endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-01-25 11:28:38.226 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2025-01-25 11:28:38.228 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Users"
+WHERE "Id" = @p0;
+2025-01-25 11:28:38.229 -05:00 [INF] User deleted successfully. Id: 37
+2025-01-25 11:28:38.230 -05:00 [INF] Executed endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-01-25 11:28:38.230 -05:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/37 - 200 null application/json; charset=utf-8 7.3286ms
+2025-01-25 11:28:43.735 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-25 11:28:43.738 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-25 11:28:43.740 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+2025-01-25 11:28:43.743 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-25 11:28:43.750 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 15.0719ms
+2025-01-25 11:28:58.707 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateUser/38 - application/json 61
+2025-01-25 11:28:58.709 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateUser/{id}'
+2025-01-25 11:28:58.710 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2025-01-25 11:28:58.712 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateUser/{id}'
+2025-01-25 11:28:58.713 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The instance of entity type 'User' cannot be tracked because another instance with the same key value for {'Id'} is already being tracked. When attaching existing entities, ensure that only one entity instance with a given key value is attached. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see the conflicting key values.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.ThrowIdentityConflict(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry, Boolean updateDuplicate)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.StartTracking(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState oldState, EntityState newState, Boolean acceptChanges, Boolean modifyProperties)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState entityState, Boolean acceptChanges, Boolean modifyProperties, Nullable`1 forceStateWhenUnknownKey, Nullable`1 fallbackState)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.PaintAction(EntityEntryGraphNode`1 node)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityEntryGraphIterator.TraverseGraph[TState](EntityEntryGraphNode`1 node, Func`2 handleNode)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.AttachGraph(InternalEntityEntry rootEntry, EntityState targetState, EntityState storeGeneratedWithKeySetTargetState, Boolean forceStateWhenUnknownKey)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.SetEntityState(InternalEntityEntry entry, EntityState entityState)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.Update(TEntity entity)
+   at FullWebApi.Application.Services.UserServices.UpdateUser(UserDto userDto) in c:\Users\Usuario\Documents\Backend\API\FullWebApi\FullWebApi.Application\Services\UserServices.cs:line 89
+   at FullWebApi.Api.EndPoints.UpdateUser.HandleAsync(UserDto req, CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\UpdateUser.cs:line 34
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-01-25 11:28:58.718 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateUser/38 - 500 null text/plain; charset=utf-8 10.8075ms
+2025-01-25 11:29:57.584 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateUser/99 - application/json 61
+2025-01-25 11:29:57.586 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateUser/{id}'
+2025-01-25 11:29:57.588 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2025-01-25 11:29:57.589 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateUser/{id}'
+2025-01-25 11:29:57.589 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Exception: User not found
+   at FullWebApi.Application.Services.UserServices.UpdateUser(UserDto userDto) in c:\Users\Usuario\Documents\Backend\API\FullWebApi\FullWebApi.Application\Services\UserServices.cs:line 84
+   at FullWebApi.Api.EndPoints.UpdateUser.HandleAsync(UserDto req, CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\UpdateUser.cs:line 34
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-01-25 11:29:57.592 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateUser/99 - 500 null text/plain; charset=utf-8 8.2197ms
+2025-01-25 11:30:37.259 -05:00 [INF] Application is shutting down...
+2025-01-25 11:30:39.934 -05:00 [INF] Registered 7 endpoints in 180 milliseconds.
+2025-01-25 11:30:39.978 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 11:30:40.044 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 11:30:40.044 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 11:30:40.045 -05:00 [INF] Hosting environment: Development
+2025-01-25 11:30:40.045 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 11:30:47.339 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateUser/99 - application/json 61
+2025-01-25 11:30:47.355 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-25 11:30:47.419 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateUser/{id}'
+2025-01-25 11:30:48.040 -05:00 [INF] Executed DbCommand (29ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2025-01-25 11:30:48.066 -05:00 [INF] Update user failed attempt: The required user Id coulnd't be find. Id: 99
+2025-01-25 11:30:48.070 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateUser/{id}'
+2025-01-25 11:30:48.076 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateUser/99 - 404 null application/json; charset=utf-8 737.6418ms
+2025-01-25 11:32:00.212 -05:00 [INF] Application is shutting down...
+2025-01-25 11:32:03.616 -05:00 [INF] Registered 7 endpoints in 199 milliseconds.
+2025-01-25 11:32:03.655 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 11:32:03.697 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 11:32:03.698 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 11:32:03.698 -05:00 [INF] Hosting environment: Development
+2025-01-25 11:32:03.699 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 11:32:10.325 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateUser/38 - application/json 61
+2025-01-25 11:32:10.398 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-25 11:32:10.463 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateUser/{id}'
+2025-01-25 11:32:11.169 -05:00 [INF] Executed DbCommand (59ms) [Parameters=[@__userDto_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__userDto_Id_0
+LIMIT 1
+2025-01-25 11:32:11.215 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateUser/{id}'
+2025-01-25 11:32:11.217 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The instance of entity type 'User' cannot be tracked because another instance with the same key value for {'Id'} is already being tracked. When attaching existing entities, ensure that only one entity instance with a given key value is attached. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see the conflicting key values.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.ThrowIdentityConflict(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry, Boolean updateDuplicate)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.StartTracking(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState oldState, EntityState newState, Boolean acceptChanges, Boolean modifyProperties)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState entityState, Boolean acceptChanges, Boolean modifyProperties, Nullable`1 forceStateWhenUnknownKey, Nullable`1 fallbackState)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.PaintAction(EntityEntryGraphNode`1 node)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityEntryGraphIterator.TraverseGraph[TState](EntityEntryGraphNode`1 node, Func`2 handleNode)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.AttachGraph(InternalEntityEntry rootEntry, EntityState targetState, EntityState storeGeneratedWithKeySetTargetState, Boolean forceStateWhenUnknownKey)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.SetEntityState(InternalEntityEntry entry, EntityState entityState)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.Update(TEntity entity)
+   at FullWebApi.Application.Services.UserServices.UpdateUser(UserDto userDto) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\FullWebApi.Application\Services\UserServices.cs:line 89
+   at FullWebApi.Api.EndPoints.UpdateUser.HandleAsync(UserDto req, CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\UpdateUser.cs:line 34
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-01-25 11:32:11.236 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateUser/38 - 500 null text/plain; charset=utf-8 912.9716ms
+2025-01-25 11:34:59.870 -05:00 [INF] Application is shutting down...
+2025-01-25 11:35:02.486 -05:00 [INF] Registered 7 endpoints in 154 milliseconds.
+2025-01-25 11:35:02.522 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 11:35:02.558 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 11:35:02.559 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 11:35:02.560 -05:00 [INF] Hosting environment: Development
+2025-01-25 11:35:02.560 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 11:35:05.442 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateUser/38 - application/json 61
+2025-01-25 11:35:05.456 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-25 11:35:05.513 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:35:06.023 -05:00 [INF] Executed DbCommand (24ms) [Parameters=[@__userDto_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__userDto_Id_0
+LIMIT 1
+2025-01-25 11:35:06.064 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:35:06.066 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The instance of entity type 'User' cannot be tracked because another instance with the same key value for {'Id'} is already being tracked. When attaching existing entities, ensure that only one entity instance with a given key value is attached. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see the conflicting key values.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.ThrowIdentityConflict(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry, Boolean updateDuplicate)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.StartTracking(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState oldState, EntityState newState, Boolean acceptChanges, Boolean modifyProperties)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState entityState, Boolean acceptChanges, Boolean modifyProperties, Nullable`1 forceStateWhenUnknownKey, Nullable`1 fallbackState)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.PaintAction(EntityEntryGraphNode`1 node)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityEntryGraphIterator.TraverseGraph[TState](EntityEntryGraphNode`1 node, Func`2 handleNode)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.AttachGraph(InternalEntityEntry rootEntry, EntityState targetState, EntityState storeGeneratedWithKeySetTargetState, Boolean forceStateWhenUnknownKey)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.SetEntityState(InternalEntityEntry entry, EntityState entityState)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.Update(TEntity entity)
+   at FullWebApi.Application.Services.UserServices.UpdateUser(UserDto userDto) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\FullWebApi.Application\Services\UserServices.cs:line 89
+   at FullWebApi.Api.EndPoints.UpdateUser.HandleAsync(UserDto req, CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\UpdateUser.cs:line 34
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-01-25 11:35:06.082 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateUser/38 - 500 null text/plain; charset=utf-8 641.7426ms
+2025-01-25 11:35:11.250 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/38 - application/json 61
+2025-01-25 11:35:11.254 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:35:11.285 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userDto_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__userDto_Id_0
+LIMIT 1
+2025-01-25 11:35:11.287 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:35:11.287 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The instance of entity type 'User' cannot be tracked because another instance with the same key value for {'Id'} is already being tracked. When attaching existing entities, ensure that only one entity instance with a given key value is attached. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see the conflicting key values.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.ThrowIdentityConflict(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry, Boolean updateDuplicate)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.StartTracking(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState oldState, EntityState newState, Boolean acceptChanges, Boolean modifyProperties)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState entityState, Boolean acceptChanges, Boolean modifyProperties, Nullable`1 forceStateWhenUnknownKey, Nullable`1 fallbackState)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.PaintAction(EntityEntryGraphNode`1 node)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityEntryGraphIterator.TraverseGraph[TState](EntityEntryGraphNode`1 node, Func`2 handleNode)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.AttachGraph(InternalEntityEntry rootEntry, EntityState targetState, EntityState storeGeneratedWithKeySetTargetState, Boolean forceStateWhenUnknownKey)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.SetEntityState(InternalEntityEntry entry, EntityState entityState)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.Update(TEntity entity)
+   at FullWebApi.Application.Services.UserServices.UpdateUser(UserDto userDto) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\FullWebApi.Application\Services\UserServices.cs:line 89
+   at FullWebApi.Api.EndPoints.UpdateUser.HandleAsync(UserDto req, CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\UpdateUser.cs:line 34
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-01-25 11:35:11.294 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/38 - 500 null text/plain; charset=utf-8 44.517ms
+2025-01-25 11:39:42.990 -05:00 [INF] Application is shutting down...
+2025-01-25 11:39:45.590 -05:00 [INF] Registered 7 endpoints in 155 milliseconds.
+2025-01-25 11:39:45.625 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 11:39:45.661 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 11:39:45.662 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 11:39:45.662 -05:00 [INF] Hosting environment: Development
+2025-01-25 11:39:45.662 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 11:39:48.257 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/38 - application/json 61
+2025-01-25 11:39:48.271 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-25 11:39:48.327 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:39:48.813 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__userDto_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__userDto_Id_0
+LIMIT 1
+2025-01-25 11:39:48.882 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?', @p1='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Users" SET "Email" = @p0, "Name" = @p1
+WHERE "Id" = @p2;
+2025-01-25 11:39:48.897 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:39:48.902 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/38 - 200 null application/json; charset=utf-8 645.9853ms
+2025-01-25 11:40:08.332 -05:00 [INF] Application is shutting down...
+2025-01-25 11:40:20.292 -05:00 [INF] Registered 7 endpoints in 133 milliseconds.
+2025-01-25 11:40:20.326 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 11:40:20.362 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 11:40:20.363 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 11:40:20.364 -05:00 [INF] Hosting environment: Development
+2025-01-25 11:40:20.364 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 11:40:39.751 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/42 - application/json 64
+2025-01-25 11:40:39.766 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-25 11:40:39.823 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:40:40.312 -05:00 [INF] Executed DbCommand (24ms) [Parameters=[@__userDto_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__userDto_Id_0
+LIMIT 1
+2025-01-25 11:40:40.364 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:40:40.369 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/42 - 200 null application/json; charset=utf-8 619.6161ms
+2025-01-25 11:43:23.091 -05:00 [INF] Application is shutting down...
+2025-01-25 11:43:25.371 -05:00 [INF] Registered 7 endpoints in 150 milliseconds.
+2025-01-25 11:43:25.406 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 11:43:25.442 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 11:43:25.443 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 11:43:25.443 -05:00 [INF] Hosting environment: Development
+2025-01-25 11:43:25.444 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 11:43:30.312 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-25 11:43:30.325 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-25 11:43:30.384 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-25 11:43:30.788 -05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+2025-01-25 11:43:30.856 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-25 11:43:30.862 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 550.2562ms
+2025-01-25 11:44:22.732 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/42 - application/json 98
+2025-01-25 11:44:22.736 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:44:22.810 -05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__user_Id_0
+LIMIT 1
+2025-01-25 11:44:22.823 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:44:22.823 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/42 - 200 null application/json; charset=utf-8 92.1338ms
+2025-01-25 11:44:28.816 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-25 11:44:28.821 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-25 11:44:28.866 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+2025-01-25 11:44:28.867 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-25 11:44:28.867 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 51.1607ms
+2025-01-25 11:44:33.795 -05:00 [INF] Application is shutting down...
+2025-01-25 11:44:40.240 -05:00 [INF] Registered 7 endpoints in 135 milliseconds.
+2025-01-25 11:44:40.276 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 11:44:40.311 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 11:44:40.312 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 11:44:40.312 -05:00 [INF] Hosting environment: Development
+2025-01-25 11:44:40.312 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 11:44:45.233 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/42 - application/json 98
+2025-01-25 11:44:45.247 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-25 11:44:45.302 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:44:45.778 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__user_Id_0
+LIMIT 1
+2025-01-25 11:44:45.821 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:44:45.822 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The instance of entity type 'User' cannot be tracked because another instance with the same key value for {'Id'} is already being tracked. When attaching existing entities, ensure that only one entity instance with a given key value is attached. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see the conflicting key values.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.ThrowIdentityConflict(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry, Boolean updateDuplicate)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.StartTracking(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState oldState, EntityState newState, Boolean acceptChanges, Boolean modifyProperties)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState entityState, Boolean acceptChanges, Boolean modifyProperties, Nullable`1 forceStateWhenUnknownKey, Nullable`1 fallbackState)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.PaintAction(EntityEntryGraphNode`1 node)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityEntryGraphIterator.TraverseGraph[TState](EntityEntryGraphNode`1 node, Func`2 handleNode)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.AttachGraph(InternalEntityEntry rootEntry, EntityState targetState, EntityState storeGeneratedWithKeySetTargetState, Boolean forceStateWhenUnknownKey)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.SetEntityState(InternalEntityEntry entry, EntityState entityState)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.Update(TEntity entity)
+   at FullWebApi.Application.Services.UserServices.UpdateUser(User user) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\FullWebApi.Application\Services\UserServices.cs:line 89
+   at FullWebApi.Api.EndPoints.UpdateUser.HandleAsync(User req, CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\UpdateUser.cs:line 34
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-01-25 11:44:45.842 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/42 - 500 null text/plain; charset=utf-8 609.2796ms
+2025-01-25 11:45:58.743 -05:00 [INF] Application is shutting down...
+2025-01-25 11:46:01.285 -05:00 [INF] Registered 7 endpoints in 144 milliseconds.
+2025-01-25 11:46:01.324 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 11:46:01.360 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 11:46:01.361 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 11:46:01.361 -05:00 [INF] Hosting environment: Development
+2025-01-25 11:46:01.362 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 11:46:05.042 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/42 - application/json 98
+2025-01-25 11:46:05.057 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-25 11:46:05.112 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:46:05.600 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__req_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__req_Id_0
+LIMIT 1
+2025-01-25 11:46:05.652 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:46:05.657 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/42 - 200 null application/json; charset=utf-8 615.7313ms
+2025-01-25 11:46:11.762 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-25 11:46:11.769 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-25 11:46:11.799 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+2025-01-25 11:46:11.804 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-25 11:46:11.805 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 42.8602ms
+2025-01-25 11:46:16.449 -05:00 [INF] Application is shutting down...
+2025-01-25 11:46:18.950 -05:00 [INF] Registered 7 endpoints in 135 milliseconds.
+2025-01-25 11:46:18.985 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 11:46:19.019 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 11:46:19.020 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 11:46:19.020 -05:00 [INF] Hosting environment: Development
+2025-01-25 11:46:19.021 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 11:46:23.255 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/42 - application/json 98
+2025-01-25 11:46:23.272 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-25 11:46:23.352 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:46:23.829 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[@__req_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__req_Id_0
+LIMIT 1
+2025-01-25 11:46:23.871 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:46:23.872 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The instance of entity type 'User' cannot be tracked because another instance with the same key value for {'Id'} is already being tracked. When attaching existing entities, ensure that only one entity instance with a given key value is attached. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see the conflicting key values.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.ThrowIdentityConflict(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry, Boolean updateDuplicate)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(TKey key, InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.IdentityMap`1.Add(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.StartTracking(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState oldState, EntityState newState, Boolean acceptChanges, Boolean modifyProperties)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntry.SetEntityState(EntityState entityState, Boolean acceptChanges, Boolean modifyProperties, Nullable`1 forceStateWhenUnknownKey, Nullable`1 fallbackState)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.PaintAction(EntityEntryGraphNode`1 node)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityEntryGraphIterator.TraverseGraph[TState](EntityEntryGraphNode`1 node, Func`2 handleNode)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.EntityGraphAttacher.AttachGraph(InternalEntityEntry rootEntry, EntityState targetState, EntityState storeGeneratedWithKeySetTargetState, Boolean forceStateWhenUnknownKey)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.SetEntityState(InternalEntityEntry entry, EntityState entityState)
+   at Microsoft.EntityFrameworkCore.Internal.InternalDbSet`1.Update(TEntity entity)
+   at FullWebApi.Application.Services.UserServices.UpdateUser(User req) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\FullWebApi.Application\Services\UserServices.cs:line 89
+   at FullWebApi.Api.EndPoints.UpdateUser.HandleAsync(User req, CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\UpdateUser.cs:line 34
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-01-25 11:46:23.890 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/42 - 500 null text/plain; charset=utf-8 635.1573ms
+2025-01-25 11:46:55.801 -05:00 [INF] Application is shutting down...
+2025-01-25 11:46:58.616 -05:00 [INF] Registered 7 endpoints in 134 milliseconds.
+2025-01-25 11:46:58.651 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-25 11:46:58.688 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-25 11:46:58.689 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-25 11:46:58.689 -05:00 [INF] Hosting environment: Development
+2025-01-25 11:46:58.690 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-25 11:47:02.320 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/42 - application/json 98
+2025-01-25 11:47:02.335 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-25 11:47:02.390 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:47:02.863 -05:00 [INF] Executed DbCommand (24ms) [Parameters=[@__req_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+WHERE u."Id" = @__req_Id_0
+LIMIT 1
+2025-01-25 11:47:02.928 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?', @p1='?', @p2='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Users" SET "Email" = @p0, "Name" = @p1, "Password" = @p2
+WHERE "Id" = @p3;
+2025-01-25 11:47:02.942 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-01-25 11:47:02.948 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/42 - 200 null application/json; charset=utf-8 628.3365ms
+2025-01-25 11:47:06.708 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-25 11:47:06.712 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-25 11:47:06.751 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Name", u."Password"
+FROM "Users" AS u
+2025-01-25 11:47:06.755 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-25 11:47:06.756 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 48.2115ms
+2025-01-25 11:48:18.991 -05:00 [INF] Application is shutting down...
