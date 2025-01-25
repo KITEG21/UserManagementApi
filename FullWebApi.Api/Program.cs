@@ -8,7 +8,9 @@ using FullWebApi.Application.Services;
 using FullWebApi.Application.Mappings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using System.Text; 
+using System.Text;
+using Microsoft.AspNetCore.Identity;
+using FullWebApi.Domain.Models.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +42,7 @@ builder.Services.AddAuthorization();
 builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<UserMapper>();
 builder.Services.AddScoped<ITokenServices, TokenServices>();
+builder.Services.AddScoped<IPasswordHasher<AdminUser>, PasswordHasher<AdminUser>>();
 
 builder.Services.AddDbContext<AppDBContext>(options 
     => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -52,7 +55,6 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
-app.UseHttpsRedirection();
 app.UseFastEndpoints();
 app.UseAuthentication();
 app.UseAuthorization();

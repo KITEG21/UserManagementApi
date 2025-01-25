@@ -29,3 +29,6 @@ Orden sugerido
 
 
 Package and tools for the proyect
+
+
+add the rest of the fluent validations(adminUser)

@@ -1,28 +1,25 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using FluentValidation;
-using FullWebApi.Domain.Dtos;
 using FullWebApi.Domain.Models;
 
 namespace FullWebApi.Domain.ModelsValidator;
+
 public class UserValidator : AbstractValidator<User>
 {
   public UserValidator()
   {
-    RuleFor(x => x.Name)
-        .NotEmpty().WithMessage("Name is required")
-        .MaximumLength(100).WithMessage("Name can't be longer than 100 characters");
+      RuleFor(x => x.Name)
+        .NotEmpty().WithMessage("Username is required")
+        .MinimumLength(3).WithMessage("Username cannot have less than 3 characters")
+        .MaximumLength(100).WithMessage("Username cannot have more than 100 characters");
 
-    RuleFor(x => x.Email)
+      RuleFor(x => x.Email)
         .NotEmpty().WithMessage("Email is required")
-        .MaximumLength(100).WithMessage("Email can't be longer than 100 characters")
-        .EmailAddress().WithMessage("Email is not valid");
+        .EmailAddress().WithMessage("Email not valid")
+        .MaximumLength(100).WithMessage("Email cannot have more than 100 characters");
 
-    RuleFor(x => x.Password)
+      RuleFor(x => x.Password)
         .NotEmpty().WithMessage("Password is required")
-        .MinimumLength(6).WithMessage("Password must be at least 6 characters long");
+        .MinimumLength(6).WithMessage("Password must have more than 6 characters"); 
   }
 
 }

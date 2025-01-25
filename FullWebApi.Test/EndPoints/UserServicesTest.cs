@@ -30,7 +30,7 @@ public class UserServicesTest
   public async Task GetAllUsers_Should_Return_Users()
   {   
     //Prepares the services  
-    List<User> newUsers = _fixture.CreateMany<User>(5).ToList();
+    List<UserDto> newUsers = _fixture.CreateMany<UserDto>(5).ToList();
     _mockUserServices.Setup(service => service.GetAllUsers()).ReturnsAsync(newUsers);
 
     //Executes the tested method 
@@ -44,12 +44,9 @@ public class UserServicesTest
   [Fact]
   public async Task SignUp_Should_Return_NewUser()
   {
-    var newUserDto = _fixture.Create<UserDto>();
     var newUser = _fixture.Create<User>();
-    
-    _mockUserServices.Setup(service => service.SignUpUser(newUserDto)).ReturnsAsync(newUser);
-
-    var result = await _mockUserServices.Object.SignUpUser(newUserDto);
+    _mockUserServices.Setup(service => service.SignUpUser(newUser)).ReturnsAsync(newUser);
+    var result = await _mockUserServices.Object.SignUpUser(newUser);
 
     Assert.NotNull(result);
     Assert.Equal(newUser.Id, result.Id);
