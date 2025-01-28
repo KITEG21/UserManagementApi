@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using FluentValidation.Results;
 using FullWebApi.Application.Interfaces;
@@ -15,6 +16,9 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.Memory;
+using Serilog;
 
 namespace FullWebApi.Application.Services;
 
@@ -22,32 +26,62 @@ public class UserServices : IUserServices
 {
   private readonly AppDBContext _context;
   private readonly UserMapper _mapper;
-
-  public UserServices(AppDBContext context, UserMapper mapper)
+  private readonly IMemoryCache _cache;
+  public UserServices(AppDBContext context, UserMapper mapper, IMemoryCache cache)
   {
     _context = context;
     _mapper = mapper;
+    _cache = cache;
   }
 
   public async Task<List<UserDto>?> GetAllUsers()
   {
-    var users = await _context.Users.ToListAsync(); 
+    var cacheKey = "allUsers";
+    if(_cache.TryGetValue(cacheKey, out List<UserDto>? cachedUsers)){
+      Log.Information("Cache hit for key: {CacheKey}", cacheKey);
+      return cachedUsers;
+    }
 
+    Log.Information("Cache miss for key: {CacheKey}", cacheKey);
+
+    var users = await _context.Users.ToListAsync(); 
     var usersList = users.Select(user => _mapper.UserToUserDto(user)).ToList();
 
     if(users == null){
       return null;
     }   
+
+    MemoryCacheEntryOptions cacheEntryOptions = new MemoryCacheEntryOptions()
+      .SetSlidingExpiration(TimeSpan.FromMinutes(5))
+      .SetAbsoluteExpiration(TimeSpan.FromMinutes(60));
+
+    _cache.Set(cacheKey, usersList, cacheEntryOptions);
+    Log.Information("Cache set for key: {CacheKey}", cacheKey);
+
     return usersList;
   }
 
-    public async Task<User> GetUser(int id)
-    {
-      User? user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id) ?? throw new Exception("User not found");
-      return user;
+  public async Task<User> GetUser(int id)
+  {
+    var cacheKey = $"user{id}";
+    if(_cache.TryGetValue(cacheKey, out User? cachedUser) && cachedUser != null){
+      Log.Information("Cache hit for key: {CacheKey}", cacheKey);
+      return cachedUser;
     }
 
-    public async Task<User> SignUpUser(User req)
+    Log.Information("Cache miss for key: {CacheKey}", cacheKey);
+    User? user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id) ?? throw new Exception("User not found");
+
+    MemoryCacheEntryOptions cacheEntryOptions = new MemoryCacheEntryOptions() 
+      .SetSlidingExpiration(TimeSpan.FromMinutes(5))
+      .SetAbsoluteExpiration(TimeSpan.FromMinutes(60));
+
+    _cache.Set(cacheKey, cachedUser, cacheEntryOptions);
+    Log.Information("Cache set for key: {CacheKey}", cacheKey);
+    return user;
+  }
+
+  public async Task<User> SignUpUser(User req)
   {    
     //Creation of new user for the DB
     User newUser = req;
@@ -64,8 +98,7 @@ public class UserServices : IUserServices
   public async Task<bool> DeleteUser(int id)
   {
     var user = await _context.Users.FindAsync(id);
-    if (user == null)
-    {
+    if (user == null){
       return false;
     }
 
@@ -79,12 +112,11 @@ public class UserServices : IUserServices
   {
     var updatedUser = await _context.Users.FirstOrDefaultAsync(x=> x.Id == req.Id);
    
-    if (updatedUser == null)
-    {
-      return null;
+    if (updatedUser == null){
+      throw new Exception("User not found");
     }
 
-   updatedUser.Name = req.Name;
+   updatedUser.Username = req.Username;
    updatedUser.Email = req.Email;
    updatedUser.Password = req.Password;
 

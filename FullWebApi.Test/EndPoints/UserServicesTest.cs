@@ -40,9 +40,44 @@ public class UserServicesTest
     Assert.NotNull(result);
     Assert.Equal(5, result.Count());         
   }
+  [Fact]
+  public async Task GetUser_Should_Return_User()
+  {
+    var user = _fixture.Create<User>();
+    _mockUserServices.Setup(service => service.GetUser(user.Id)).ReturnsAsync(user);
+    
+    var result = await _mockUserServices.Object.GetUser(user.Id);
+    
+    Assert.NotNull(result);
+    Assert.Equal(user.Id, result.Id);
+  }
+
+  [Fact] 
+  public async Task DeleteUser_Should_Return_True_When_Successful()
+  {
+    var userId = _fixture.Create<int>();
+    _mockUserServices.Setup(service => service.DeleteUser(userId)).ReturnsAsync(true);
+
+    var result = await _mockUserServices.Object.DeleteUser(userId);
+
+    Assert.True(result);
+  }
 
   [Fact]
-  public async Task SignUp_Should_Return_NewUser()
+  public async Task UpdateUser_Should_Return_UpdatedUser()
+  {
+    var user = _fixture.Create<User>();
+    _mockUserServices.Setup(service => service.UpdateUser(user)).ReturnsAsync(user);
+
+    var result = await _mockUserServices.Object.UpdateUser(user);
+
+    Assert.NotNull(result);
+    Assert.Equal(user.Id, result.Id);
+    Assert.Equal(user.Username, result.Username);
+    Assert.Equal(user.Email, result.Email);
+  }
+  [Fact]
+  public async Task CreateUser_Should_Return_NewUser()
   {
     var newUser = _fixture.Create<User>();
     _mockUserServices.Setup(service => service.SignUpUser(newUser)).ReturnsAsync(newUser);

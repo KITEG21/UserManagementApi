@@ -1,0 +1,609 @@
+2025-01-27 17:30:40.965 -05:00 [INF] Registered 7 endpoints in 211 milliseconds.
+2025-01-27 17:30:41.000 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-27 17:30:41.042 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-27 17:30:41.042 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-27 17:30:41.043 -05:00 [INF] Hosting environment: Development
+2025-01-27 17:30:41.043 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-27 17:33:31.082 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 62
+2025-01-27 17:33:31.104 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-27 17:33:31.133 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-01-27 17:33:31.801 -05:00 [INF] Executed DbCommand (28ms) [Parameters=[@__req_Username_0='?', @__req_Password_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0 AND a."Password" = @__req_Password_1
+LIMIT 1
+2025-01-27 17:33:31.860 -05:00 [INF] User logged successfully. Username: Kiteg
+2025-01-27 17:33:31.863 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-01-27 17:33:31.868 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 200 null application/json; charset=utf-8 788.4453ms
+2025-01-27 17:37:23.767 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/user/signup - application/json 101
+2025-01-27 17:37:23.771 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-01-27 17:37:23.774 -05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-27 17:37:23.775 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/user/signup - 401 0 null 8.2631ms
+2025-01-27 17:37:42.494 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-27 17:37:42.528 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '25/01/2025 17:08:15', Current time (UTC): '27/01/2025 22:37:42'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-27 17:37:42.536 -05:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '25/01/2025 17:08:15', Current time (UTC): '27/01/2025 22:37:42'.
+2025-01-27 17:37:42.537 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-01-27 17:37:42.539 -05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-27 17:37:42.539 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 401 0 null 44.971ms
+2025-01-27 17:37:47.476 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-27 17:37:47.484 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-27 17:37:47.520 -05:00 [ERR] Failed executing DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-27 17:37:47.529 -05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'FullWebApi.Infrastructure.Data.AppDBContext'.
+Npgsql.PostgresException (0x80004005): 42703: no existe la columna u.Username
+
+POSITION: 41
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: no existe la columna u.Username
+    Position: 41
+    File: parse_relation.c
+    Line: 3721
+    Routine: errorMissingColumn
+Npgsql.PostgresException (0x80004005): 42703: no existe la columna u.Username
+
+POSITION: 41
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: no existe la columna u.Username
+    Position: 41
+    File: parse_relation.c
+    Line: 3721
+    Routine: errorMissingColumn
+2025-01-27 17:37:47.539 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-27 17:37:47.540 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+Npgsql.PostgresException (0x80004005): 42703: no existe la columna u.Username
+
+POSITION: 41
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FullWebApi.Application.Services.UserServices.GetAllUsers() in C:\Users\Usuario\Documents\Backend\API\FullWebApi\FullWebApi.Application\Services\UserServices.cs:line 34
+   at FullWebApi.Api.EndPoints.GetAllUsers.HandleAsync(CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\GetAllUsers.cs:line 31
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: no existe la columna u.Username
+    Position: 41
+    File: parse_relation.c
+    Line: 3721
+    Routine: errorMissingColumn
+2025-01-27 17:37:47.555 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 500 null text/plain; charset=utf-8 79.2823ms
+2025-01-27 17:37:55.439 -05:00 [INF] Application is shutting down...
+2025-01-27 17:39:44.639 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2025-01-27 17:39:44.676 -05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-01-27 17:39:44.701 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2025-01-27 17:39:44.840 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1 FROM pg_catalog.pg_class c
+    JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace
+    WHERE n.nspname='public' AND
+          c.relname='__EFMigrationsHistory'
+)
+2025-01-27 17:39:44.841 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2025-01-27 17:39:44.848 -05:00 [INF] No migrations were applied. The database is already up to date.
+2025-01-27 17:39:50.028 -05:00 [INF] Registered 7 endpoints in 137 milliseconds.
+2025-01-27 17:39:50.065 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-27 17:39:50.101 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-27 17:39:50.102 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-27 17:39:50.102 -05:00 [INF] Hosting environment: Development
+2025-01-27 17:39:50.103 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-27 17:39:53.513 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-27 17:39:53.527 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-27 17:39:53.581 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-27 17:39:54.005 -05:00 [ERR] Failed executing DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-27 17:39:54.021 -05:00 [ERR] An exception occurred while iterating over the results of a query for context type 'FullWebApi.Infrastructure.Data.AppDBContext'.
+Npgsql.PostgresException (0x80004005): 42703: no existe la columna u.Username
+
+POSITION: 41
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: no existe la columna u.Username
+    Position: 41
+    File: parse_relation.c
+    Line: 3721
+    Routine: errorMissingColumn
+Npgsql.PostgresException (0x80004005): 42703: no existe la columna u.Username
+
+POSITION: 41
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: no existe la columna u.Username
+    Position: 41
+    File: parse_relation.c
+    Line: 3721
+    Routine: errorMissingColumn
+2025-01-27 17:39:54.032 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-27 17:39:54.033 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+Npgsql.PostgresException (0x80004005): 42703: no existe la columna u.Username
+
+POSITION: 41
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at FullWebApi.Application.Services.UserServices.GetAllUsers() in C:\Users\Usuario\Documents\Backend\API\FullWebApi\FullWebApi.Application\Services\UserServices.cs:line 34
+   at FullWebApi.Api.EndPoints.GetAllUsers.HandleAsync(CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\GetAllUsers.cs:line 31
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: no existe la columna u.Username
+    Position: 41
+    File: parse_relation.c
+    Line: 3721
+    Routine: errorMissingColumn
+2025-01-27 17:39:54.051 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 500 null text/plain; charset=utf-8 539.6486ms
+2025-01-27 17:40:35.039 -05:00 [INF] Application is shutting down...
+2025-01-27 17:40:37.556 -05:00 [INF] Registered 7 endpoints in 137 milliseconds.
+2025-01-27 17:40:37.594 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-27 17:40:37.629 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-27 17:40:37.630 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-27 17:40:37.630 -05:00 [INF] Hosting environment: Development
+2025-01-27 17:40:37.631 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-27 17:40:40.563 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-27 17:40:40.577 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-27 17:40:40.632 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-27 17:40:41.037 -05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-27 17:40:41.105 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-27 17:40:41.111 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 549.2095ms
+2025-01-27 17:41:18.351 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-27 17:41:18.354 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-27 17:41:18.423 -05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-27 17:41:18.427 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-27 17:41:18.427 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 77.2373ms
+2025-01-27 17:43:01.428 -05:00 [INF] Application is shutting down...
+2025-01-27 20:15:23.011 -05:00 [INF] Registered 7 endpoints in 159 milliseconds.
+2025-01-27 20:15:23.051 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-27 20:15:23.088 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-27 20:15:23.089 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-27 20:15:23.089 -05:00 [INF] Hosting environment: Development
+2025-01-27 20:15:23.090 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-27 20:15:39.208 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-27 20:15:39.222 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-27 20:15:39.272 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '27/01/2025 23:33:31', Current time (UTC): '28/01/2025 1:15:39'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-27 20:15:39.280 -05:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '27/01/2025 23:33:31', Current time (UTC): '28/01/2025 1:15:39'.
+2025-01-27 20:15:39.283 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-01-27 20:15:39.287 -05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-27 20:15:39.290 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 401 0 null 83.0793ms
+2025-01-27 20:15:42.410 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 62
+2025-01-27 20:15:42.414 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-01-27 20:15:42.905 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__req_Username_0='?', @__req_Password_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0 AND a."Password" = @__req_Password_1
+LIMIT 1
+2025-01-27 20:15:42.953 -05:00 [INF] User logged successfully. Username: Kiteg
+2025-01-27 20:15:42.956 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-01-27 20:15:42.960 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 200 null application/json; charset=utf-8 549.7891ms
+2025-01-27 20:15:51.586 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-27 20:15:51.614 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-27 20:15:51.635 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-27 20:15:51.647 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-27 20:15:51.648 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 62.0202ms
+2025-01-27 20:16:13.676 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-27 20:16:13.682 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-27 20:16:13.727 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-27 20:16:13.729 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-27 20:16:13.730 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 53.7479ms
+2025-01-27 20:16:14.707 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-27 20:16:14.710 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-27 20:16:14.714 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-27 20:16:14.717 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-27 20:16:14.718 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 11.2793ms
+2025-01-27 20:16:15.525 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-27 20:16:15.528 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-27 20:16:15.534 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-27 20:16:15.539 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-27 20:16:15.542 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 16.6359ms
+2025-01-27 20:16:16.304 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-27 20:16:16.308 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-27 20:16:16.310 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-27 20:16:16.311 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-27 20:16:16.311 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 7.6742ms
+2025-01-27 20:16:21.558 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-27 20:16:21.561 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '27/01/2025 23:33:31', Current time (UTC): '28/01/2025 1:16:21'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-01-27 20:16:21.564 -05:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '27/01/2025 23:33:31', Current time (UTC): '28/01/2025 1:16:21'.
+2025-01-27 20:16:21.567 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-01-27 20:16:21.570 -05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-27 20:16:21.573 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 401 0 null 15.2562ms
+2025-01-27 20:16:26.264 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-27 20:16:26.269 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-27 20:16:26.285 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-27 20:16:26.288 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-27 20:16:26.289 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 24.8817ms
+2025-01-27 20:16:27.344 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-27 20:16:27.346 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-27 20:16:27.350 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-27 20:16:27.356 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-27 20:16:27.358 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 13.8936ms
+2025-01-27 20:16:28.195 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-27 20:16:28.196 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-27 20:16:28.198 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-27 20:16:28.199 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-27 20:16:28.201 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 5.6885ms
+2025-01-27 20:16:34.610 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-27 20:16:34.611 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-27 20:16:34.612 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-27 20:16:34.613 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-27 20:16:34.614 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 4.3911ms
+2025-01-27 20:16:35.986 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-27 20:16:35.987 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-27 20:16:35.990 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-27 20:16:35.993 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-27 20:16:35.996 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 9.8562ms
+2025-01-27 20:21:09.474 -05:00 [INF] Application is shutting down...
+2025-01-27 20:21:12.759 -05:00 [INF] Registered 7 endpoints in 137 milliseconds.
+2025-01-27 20:21:12.801 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-27 20:21:12.839 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-27 20:21:12.840 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-27 20:21:12.840 -05:00 [INF] Hosting environment: Development
+2025-01-27 20:21:12.840 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-27 20:21:21.708 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-27 20:21:21.722 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-27 20:21:21.778 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-27 20:21:27.908 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-27 20:21:27.910 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (5000ms) - Last Connection Exception: InternalFailure (ReadEndOfStream, last-recv: 0) on localhost:5232/Interactive, Flushed/Faulted, last: ECHO, origin: ReadFromPipe, outstanding: 12, last-read: 0s ago, last-write: 0s ago, unanswered-write: 0s ago, keep-alive: 60s, state: ConnectedEstablishing, mgr: 8 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.7.27.49176, command=HMGET, timeout: 5000, inst: 12, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 1, serverEndpoint: localhost:5232, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: DESKTOP-FH1NF5I(SE.Redis-v2.7.27.49176), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=0,Free=32767,Min=8,Max=32767), POOL: (Threads=8,QueuedItems=0,CompletedItems=469,Timers=1), v: 2.7.27.49176 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: InternalFailure (ReadEndOfStream, last-recv: 0) on localhost:5232/Interactive, Flushed/Faulted, last: ECHO, origin: ReadFromPipe, outstanding: 12, last-read: 0s ago, last-write: 0s ago, unanswered-write: 0s ago, keep-alive: 60s, state: ConnectedEstablishing, mgr: 8 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.7.27.49176
+ ---> System.InvalidOperationException: Unexpected response prefix: H
+   at StackExchange.Redis.PhysicalConnection.TryParseResult(ResultFlags flags, Arena`1 arena, ReadOnlySequence`1& buffer, BufferReader& reader, Boolean includeDetilInExceptions, ServerEndPoint server, Boolean allowInlineProtocol) in /_/src/StackExchange.Redis/PhysicalConnection.cs:line 2122
+   at StackExchange.Redis.PhysicalConnection.TryParseResult(Boolean isResp3, Arena`1 arena, ReadOnlySequence`1& buffer, BufferReader& reader, Boolean includeDetilInExceptions, PhysicalConnection connection, Boolean allowInlineProtocol) in /_/src/StackExchange.Redis/PhysicalConnection.cs:line 2052
+   at StackExchange.Redis.PhysicalConnection.ProcessBuffer(ReadOnlySequence`1& buffer) in /_/src/StackExchange.Redis/PhysicalConnection.cs:line 1864
+   at StackExchange.Redis.PhysicalConnection.ReadFromPipe() in /_/src/StackExchange.Redis/PhysicalConnection.cs:line 1807
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at FullWebApi.Application.Services.UserServices.GetAllUsers() in C:\Users\Usuario\Documents\Backend\API\FullWebApi\FullWebApi.Application\Services\UserServices.cs:line 38
+   at FullWebApi.Api.EndPoints.GetAllUsers.HandleAsync(CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\GetAllUsers.cs:line 31
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-01-27 20:21:27.929 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 500 null text/plain; charset=utf-8 6220.9822ms
+2025-01-27 20:22:39.670 -05:00 [INF] Application is shutting down...
+2025-01-27 20:37:17.974 -05:00 [INF] Registered 7 endpoints in 145 milliseconds.
+2025-01-27 20:37:18.010 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-27 20:37:18.050 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-27 20:37:18.051 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-27 20:37:18.051 -05:00 [INF] Hosting environment: Development
+2025-01-27 20:37:18.052 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-27 20:37:21.450 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-27 20:37:21.467 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-27 20:37:21.523 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-27 20:37:26.626 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-27 20:37:26.627 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (5000ms) - Last Connection Exception: InternalFailure (ReadEndOfStream, last-recv: 0) on localhost:5232/Interactive, Flushed/Faulted, last: ECHO, origin: ReadFromPipe, outstanding: 12, last-read: 0s ago, last-write: 0s ago, unanswered-write: 0s ago, keep-alive: 60s, state: ConnectedEstablishing, mgr: 7 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.8.24.3255, command=HMGET, timeout: 5000, inst: 12, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 1, serverEndpoint: localhost:5232, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: DESKTOP-FH1NF5I(SE.Redis-v2.8.24.3255), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=0,Free=32767,Min=8,Max=32767), POOL: (Threads=8,QueuedItems=0,CompletedItems=442,Timers=1), v: 2.8.24.3255 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: InternalFailure (ReadEndOfStream, last-recv: 0) on localhost:5232/Interactive, Flushed/Faulted, last: ECHO, origin: ReadFromPipe, outstanding: 12, last-read: 0s ago, last-write: 0s ago, unanswered-write: 0s ago, keep-alive: 60s, state: ConnectedEstablishing, mgr: 7 of 10 available, last-heartbeat: never, global: 0s ago, v: 2.8.24.3255
+ ---> System.InvalidOperationException: Unexpected response prefix: H
+   at StackExchange.Redis.PhysicalConnection.TryParseResult(ResultFlags flags, Arena`1 arena, ReadOnlySequence`1& buffer, BufferReader& reader, Boolean includeDetilInExceptions, ServerEndPoint server, Boolean allowInlineProtocol) in /_/src/StackExchange.Redis/PhysicalConnection.cs:line 2218
+   at StackExchange.Redis.PhysicalConnection.TryParseResult(Boolean isResp3, Arena`1 arena, ReadOnlySequence`1& buffer, BufferReader& reader, Boolean includeDetilInExceptions, PhysicalConnection connection, Boolean allowInlineProtocol) in /_/src/StackExchange.Redis/PhysicalConnection.cs:line 2135
+   at StackExchange.Redis.PhysicalConnection.ProcessBuffer(ReadOnlySequence`1& buffer) in /_/src/StackExchange.Redis/PhysicalConnection.cs:line 1954
+   at StackExchange.Redis.PhysicalConnection.ReadFromPipe() in /_/src/StackExchange.Redis/PhysicalConnection.cs:line 1897
+   --- End of inner exception stack trace ---
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at FullWebApi.Application.Services.UserServices.GetAllUsers() in C:\Users\Usuario\Documents\Backend\API\FullWebApi\FullWebApi.Application\Services\UserServices.cs:line 38
+   at FullWebApi.Api.EndPoints.GetAllUsers.HandleAsync(CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\GetAllUsers.cs:line 31
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-01-27 20:37:26.645 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 500 null text/plain; charset=utf-8 5195.8659ms
+2025-01-27 20:38:35.377 -05:00 [INF] Application is shutting down...
+2025-01-27 21:03:05.945 -05:00 [INF] Registered 7 endpoints in 169 milliseconds.
+2025-01-27 21:03:05.989 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-27 21:03:06.038 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-27 21:03:06.039 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-27 21:03:06.039 -05:00 [INF] Hosting environment: Development
+2025-01-27 21:03:06.039 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-27 21:04:35.718 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 62
+2025-01-27 21:04:35.732 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-27 21:04:35.746 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-01-27 21:04:36.230 -05:00 [INF] Executed DbCommand (24ms) [Parameters=[@__req_Username_0='?', @__req_Password_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0 AND a."Password" = @__req_Password_1
+LIMIT 1
+2025-01-27 21:04:36.286 -05:00 [INF] User logged successfully. Username: Kiteg
+2025-01-27 21:04:36.288 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-01-27 21:04:36.293 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 200 null application/json; charset=utf-8 575.686ms
+2025-01-27 21:04:44.450 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-27 21:04:44.485 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-27 21:04:44.500 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-27 21:04:44.501 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 'configuration')
+   at StackExchange.Redis.ConfigurationOptions.DoParse(String configuration, Boolean ignoreUnknown) in /_/src/StackExchange.Redis/ConfigurationOptions.cs:line 938
+   at StackExchange.Redis.ConfigurationOptions.Parse(String configuration, Boolean ignoreUnknown) in /_/src/StackExchange.Redis/ConfigurationOptions.cs:line 742
+   at StackExchange.Redis.ConfigurationOptions.Parse(String configuration) in /_/src/StackExchange.Redis/ConfigurationOptions.cs:line 732
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCacheOptions.GetConfiguredOptions()
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.ConnectSlowAsync(CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at FullWebApi.Application.Services.UserServices.GetAllUsers() in C:\Users\Usuario\Documents\Backend\API\FullWebApi\FullWebApi.Application\Services\UserServices.cs:line 38
+   at FullWebApi.Api.EndPoints.GetAllUsers.HandleAsync(CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\GetAllUsers.cs:line 31
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-01-27 21:04:44.516 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 500 null text/plain; charset=utf-8 67.0765ms
+2025-01-27 21:07:40.131 -05:00 [INF] Application is shutting down...
+2025-01-27 21:09:32.579 -05:00 [INF] Registered 7 endpoints in 159 milliseconds.
+2025-01-27 21:09:32.617 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-27 21:09:32.658 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-27 21:09:32.659 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-27 21:09:32.659 -05:00 [INF] Hosting environment: Development
+2025-01-27 21:09:32.659 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-27 21:09:40.425 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-27 21:09:40.439 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-27 21:09:40.494 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-27 21:09:40.524 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-27 21:09:40.525 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 'configuration')
+   at StackExchange.Redis.ConfigurationOptions.DoParse(String configuration, Boolean ignoreUnknown) in /_/src/StackExchange.Redis/ConfigurationOptions.cs:line 938
+   at StackExchange.Redis.ConfigurationOptions.Parse(String configuration, Boolean ignoreUnknown) in /_/src/StackExchange.Redis/ConfigurationOptions.cs:line 742
+   at StackExchange.Redis.ConfigurationOptions.Parse(String configuration) in /_/src/StackExchange.Redis/ConfigurationOptions.cs:line 732
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCacheOptions.GetConfiguredOptions()
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.ConnectSlowAsync(CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at FullWebApi.Application.Services.UserServices.GetAllUsers() in C:\Users\Usuario\Documents\Backend\API\FullWebApi\FullWebApi.Application\Services\UserServices.cs:line 38
+   at FullWebApi.Api.EndPoints.GetAllUsers.HandleAsync(CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\GetAllUsers.cs:line 31
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-01-27 21:09:40.542 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 500 null text/plain; charset=utf-8 118.1672ms
+2025-01-27 21:09:45.253 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-27 21:09:45.257 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-27 21:09:45.258 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-27 21:09:45.259 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentNullException: Value cannot be null. (Parameter 'configuration')
+   at StackExchange.Redis.ConfigurationOptions.DoParse(String configuration, Boolean ignoreUnknown) in /_/src/StackExchange.Redis/ConfigurationOptions.cs:line 938
+   at StackExchange.Redis.ConfigurationOptions.Parse(String configuration, Boolean ignoreUnknown) in /_/src/StackExchange.Redis/ConfigurationOptions.cs:line 742
+   at StackExchange.Redis.ConfigurationOptions.Parse(String configuration) in /_/src/StackExchange.Redis/ConfigurationOptions.cs:line 732
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCacheOptions.GetConfiguredOptions()
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.ConnectSlowAsync(CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at FullWebApi.Application.Services.UserServices.GetAllUsers() in C:\Users\Usuario\Documents\Backend\API\FullWebApi\FullWebApi.Application\Services\UserServices.cs:line 38
+   at FullWebApi.Api.EndPoints.GetAllUsers.HandleAsync(CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\GetAllUsers.cs:line 31
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-01-27 21:09:45.263 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 500 null text/plain; charset=utf-8 9.7357ms
+2025-01-27 21:10:03.665 -05:00 [INF] Application is shutting down...
+2025-01-27 21:10:05.998 -05:00 [INF] Registered 7 endpoints in 146 milliseconds.
+2025-01-27 21:10:06.034 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-27 21:10:06.078 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-27 21:10:06.078 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-27 21:10:06.079 -05:00 [INF] Hosting environment: Development
+2025-01-27 21:10:06.079 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-27 21:10:11.326 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-27 21:10:11.339 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-27 21:10:11.403 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-27 21:10:24.598 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-27 21:10:24.599 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (5000ms) - Last Connection Exception: It was not possible to connect to the redis server(s). ConnectTimeout, command=HMGET, timeout: 5000, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Initializing, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 1, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: DESKTOP-FH1NF5I(SE.Redis-v2.8.24.3255), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=0,Free=32767,Min=8,Max=32767), POOL: (Threads=7,QueuedItems=0,CompletedItems=94,Timers=5), v: 2.8.24.3255 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). ConnectTimeout
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at FullWebApi.Application.Services.UserServices.GetAllUsers() in C:\Users\Usuario\Documents\Backend\API\FullWebApi\FullWebApi.Application\Services\UserServices.cs:line 38
+   at FullWebApi.Api.EndPoints.GetAllUsers.HandleAsync(CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\GetAllUsers.cs:line 31
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-01-27 21:10:24.616 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 500 null text/plain; charset=utf-8 13290.8208ms
+2025-01-27 21:11:27.947 -05:00 [INF] Application is shutting down...
+2025-01-27 21:48:51.944 -05:00 [INF] Registered 7 endpoints in 166 milliseconds.
+2025-01-27 21:48:51.988 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-27 21:48:52.028 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-27 21:48:52.029 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-27 21:48:52.029 -05:00 [INF] Hosting environment: Development
+2025-01-27 21:48:52.030 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-27 21:49:00.251 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 62
+2025-01-27 21:49:00.265 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-27 21:49:00.281 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-01-27 21:49:00.781 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__req_Username_0='?', @__req_Password_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0 AND a."Password" = @__req_Password_1
+LIMIT 1
+2025-01-27 21:49:00.837 -05:00 [INF] User logged successfully. Username: Kiteg
+2025-01-27 21:49:00.839 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-01-27 21:49:00.844 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 200 null application/json; charset=utf-8 594.1434ms
+2025-01-27 21:49:08.593 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-27 21:49:08.637 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-27 21:49:08.660 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-27 21:49:08.671 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-27 21:49:08.672 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 80.1497ms
+2025-01-27 23:18:18.802 -05:00 [INF] Application is shutting down...

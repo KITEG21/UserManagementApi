@@ -1,0 +1,7 @@
+2025-01-26 14:46:38.270 -05:00 [INF] Registered 7 endpoints in 247 milliseconds.
+2025-01-26 14:46:38.308 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-26 14:46:38.357 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-26 14:46:38.358 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-26 14:46:38.358 -05:00 [INF] Hosting environment: Development
+2025-01-26 14:46:38.359 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-26 14:47:15.226 -05:00 [INF] Application is shutting down...

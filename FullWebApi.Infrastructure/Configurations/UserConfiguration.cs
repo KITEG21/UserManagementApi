@@ -19,7 +19,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 
     builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
-    builder.Property(x => x.Name)
+    builder.Property(x => x.Username)
     .IsRequired()
     .HasMaxLength(100);
 

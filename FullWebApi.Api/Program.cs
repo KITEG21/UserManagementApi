@@ -52,6 +52,7 @@ builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<UserMapper>();
 builder.Services.AddScoped<ITokenServices, TokenServices>();
 builder.Services.AddScoped<IPasswordHasher<AdminUser>, PasswordHasher<AdminUser>>();
+builder.Services.AddMemoryCache();
 
 builder.Services.AddDbContext<AppDBContext>(options 
     => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),

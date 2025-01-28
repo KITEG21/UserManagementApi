@@ -1,0 +1,821 @@
+2025-01-28 12:41:58.761 -05:00 [INF] Registered 7 endpoints in 239 milliseconds.
+2025-01-28 12:41:58.822 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-28 12:41:58.904 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-28 12:41:58.906 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-28 12:41:58.907 -05:00 [INF] Hosting environment: Development
+2025-01-28 12:41:58.907 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-28 12:42:36.575 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 62
+2025-01-28 12:42:36.592 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-28 12:42:36.617 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-01-28 12:42:37.330 -05:00 [INF] Executed DbCommand (27ms) [Parameters=[@__req_Username_0='?', @__req_Password_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0 AND a."Password" = @__req_Password_1
+LIMIT 1
+2025-01-28 12:42:37.389 -05:00 [INF] User logged successfully. Username: Kiteg
+2025-01-28 12:42:37.391 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-01-28 12:42:37.396 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 200 null application/json; charset=utf-8 822.3153ms
+2025-01-28 12:42:49.174 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:42:49.209 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:42:49.231 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:42:49.243 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:42:49.244 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 71.2111ms
+2025-01-28 12:43:02.569 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:43:02.574 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:43:02.611 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:43:02.613 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:43:02.613 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 43.771ms
+2025-01-28 12:43:03.339 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:43:03.341 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:43:03.343 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:43:03.347 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:43:03.349 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 9.9319ms
+2025-01-28 12:43:04.016 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:43:04.017 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:43:04.019 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:43:04.020 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:43:04.020 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 4.3918ms
+2025-01-28 12:43:04.739 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:43:04.741 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:43:04.742 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:43:04.746 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:43:04.748 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 9.3299ms
+2025-01-28 12:43:05.410 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:43:05.417 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:43:05.421 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:43:05.426 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:43:05.428 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 18.1341ms
+2025-01-28 12:43:18.779 -05:00 [INF] Application is shutting down...
+2025-01-28 12:50:38.999 -05:00 [INF] Registered 7 endpoints in 151 milliseconds.
+2025-01-28 12:50:39.041 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-28 12:50:39.082 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-28 12:50:39.083 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-28 12:50:39.083 -05:00 [INF] Hosting environment: Development
+2025-01-28 12:50:39.084 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-28 12:50:43.465 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:50:43.479 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-28 12:50:43.536 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:43.963 -05:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:50:44.032 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:44.037 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 572.9667ms
+2025-01-28 12:50:45.886 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:50:45.902 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:45.906 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:45.907 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 23.0065ms
+2025-01-28 12:50:46.818 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:50:46.821 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:46.822 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:46.822 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 4.1423ms
+2025-01-28 12:50:47.554 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:50:47.556 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:47.556 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:47.557 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 2.8807ms
+2025-01-28 12:50:48.272 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:50:48.274 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:48.274 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:48.275 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 2.9413ms
+2025-01-28 12:50:48.973 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:50:48.976 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:48.977 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:48.981 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 7.9432ms
+2025-01-28 12:50:49.657 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:50:49.660 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:49.661 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:49.662 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 4.6672ms
+2025-01-28 12:50:50.280 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:50:50.281 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:50.282 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:50.283 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 3.0128ms
+2025-01-28 12:50:50.958 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:50:50.959 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:50.960 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:50:50.961 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 2.89ms
+2025-01-28 12:50:59.190 -05:00 [INF] Application is shutting down...
+2025-01-28 12:54:51.167 -05:00 [INF] Registered 7 endpoints in 160 milliseconds.
+2025-01-28 12:54:51.204 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-28 12:54:51.246 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-28 12:54:51.247 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-28 12:54:51.248 -05:00 [INF] Hosting environment: Development
+2025-01-28 12:54:51.248 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-28 12:55:40.360 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:55:40.374 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-28 12:55:40.429 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:55:40.454 -05:00 [INF] Cache miss for key: allUsers
+2025-01-28 12:55:40.829 -05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:55:40.873 -05:00 [INF] Cache set for key: allUsers
+2025-01-28 12:55:40.899 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:55:40.904 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 544.1596ms
+2025-01-28 12:55:55.186 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:55:55.197 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:55:55.198 -05:00 [INF] Cache hit for key: allUsers
+2025-01-28 12:55:55.199 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:55:55.200 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 14.99ms
+2025-01-28 12:56:02.749 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:56:02.762 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:02.765 -05:00 [INF] Cache hit for key: allUsers
+2025-01-28 12:56:02.767 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:02.769 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 20.2374ms
+2025-01-28 12:56:03.648 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:56:03.650 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:03.651 -05:00 [INF] Cache hit for key: allUsers
+2025-01-28 12:56:03.651 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:03.652 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 3.5909ms
+2025-01-28 12:56:10.514 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:56:10.515 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:10.516 -05:00 [INF] Cache hit for key: allUsers
+2025-01-28 12:56:10.516 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:10.517 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 2.7891ms
+2025-01-28 12:56:11.602 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:56:11.604 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:11.605 -05:00 [INF] Cache hit for key: allUsers
+2025-01-28 12:56:11.607 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:11.608 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 5.7279ms
+2025-01-28 12:56:12.476 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:56:12.477 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:12.478 -05:00 [INF] Cache hit for key: allUsers
+2025-01-28 12:56:12.478 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:12.479 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 2.7595ms
+2025-01-28 12:56:26.437 -05:00 [INF] Application is shutting down...
+2025-01-28 12:56:28.932 -05:00 [INF] Registered 7 endpoints in 164 milliseconds.
+2025-01-28 12:56:28.968 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-28 12:56:29.002 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-28 12:56:29.003 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-28 12:56:29.003 -05:00 [INF] Hosting environment: Development
+2025-01-28 12:56:29.004 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-28 12:56:32.815 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:56:32.829 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-28 12:56:32.884 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:33.307 -05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:56:33.374 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:33.381 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 566.9833ms
+2025-01-28 12:56:35.483 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:56:35.491 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:35.510 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:56:35.511 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:35.512 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 29.3912ms
+2025-01-28 12:56:43.047 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:56:43.052 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:43.094 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:56:43.095 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:43.096 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 48.9751ms
+2025-01-28 12:56:44.226 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:56:44.229 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:44.231 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:56:44.232 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:44.235 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 8.5606ms
+2025-01-28 12:56:44.996 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:56:44.999 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:45.003 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:56:45.011 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:45.015 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 19.1551ms
+2025-01-28 12:56:45.675 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:56:45.678 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:45.679 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:56:45.680 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:45.680 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 5.3811ms
+2025-01-28 12:56:46.357 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:56:46.359 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:46.361 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:56:46.362 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:46.362 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 5.4886ms
+2025-01-28 12:56:47.023 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:56:47.025 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:47.026 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:56:47.027 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:47.027 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 4.064ms
+2025-01-28 12:56:47.726 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:56:47.729 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:47.730 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:56:47.732 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:47.733 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 6.6642ms
+2025-01-28 12:56:48.317 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:56:48.319 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:48.320 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:56:48.322 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:48.323 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 5.5762ms
+2025-01-28 12:56:48.962 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:56:48.964 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:48.966 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:56:48.968 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:56:48.970 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 7.9333ms
+2025-01-28 12:56:50.990 -05:00 [INF] Application is shutting down...
+2025-01-28 12:56:56.610 -05:00 [INF] Registered 7 endpoints in 135 milliseconds.
+2025-01-28 12:56:56.645 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-28 12:56:56.681 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-28 12:56:56.682 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-28 12:56:56.682 -05:00 [INF] Hosting environment: Development
+2025-01-28 12:56:56.682 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-28 12:57:00.080 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:57:00.095 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-28 12:57:00.152 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:57:00.180 -05:00 [INF] Cache miss for key: allUsers
+2025-01-28 12:57:00.558 -05:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 12:57:00.603 -05:00 [INF] Cache set for key: allUsers
+2025-01-28 12:57:00.625 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:57:00.630 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 551.0278ms
+2025-01-28 12:57:02.084 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:57:02.087 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:57:02.088 -05:00 [INF] Cache hit for key: allUsers
+2025-01-28 12:57:02.089 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:57:02.090 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 6.5133ms
+2025-01-28 12:57:05.653 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 12:57:05.656 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:57:05.656 -05:00 [INF] Cache hit for key: allUsers
+2025-01-28 12:57:05.657 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 12:57:05.658 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 4.8818ms
+2025-01-28 12:57:09.269 -05:00 [INF] Application is shutting down...
+2025-01-28 13:08:25.489 -05:00 [INF] Registered 7 endpoints in 139 milliseconds.
+2025-01-28 13:08:25.524 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-28 13:08:25.560 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-28 13:08:25.561 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-28 13:08:25.561 -05:00 [INF] Hosting environment: Development
+2025-01-28 13:08:25.561 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-28 13:08:39.010 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:08:39.025 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-28 13:08:39.082 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:39.117 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:08:39.669 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:08:39.702 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:08:39.724 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:39.729 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 719.7888ms
+2025-01-28 13:08:42.759 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:08:42.764 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:42.765 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:08:42.781 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:08:42.782 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:08:42.783 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:42.784 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 25.8442ms
+2025-01-28 13:08:44.720 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:08:44.732 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:44.734 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:08:44.776 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:08:44.777 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:08:44.778 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:44.778 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 58.257ms
+2025-01-28 13:08:45.841 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:08:45.845 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:45.847 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:08:45.850 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:08:45.851 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:08:45.851 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:45.852 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 11.2911ms
+2025-01-28 13:08:46.650 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:08:46.654 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:46.657 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:08:46.661 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:08:46.663 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:08:46.664 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:46.666 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 15.8621ms
+2025-01-28 13:08:47.350 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:08:47.352 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:47.353 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:08:47.354 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:08:47.355 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:08:47.358 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:47.360 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 10.4055ms
+2025-01-28 13:08:49.130 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:08:49.131 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:49.132 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:08:49.133 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:08:49.134 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:08:49.135 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:49.135 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 5.5715ms
+2025-01-28 13:08:49.889 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:08:49.895 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:49.897 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:08:49.900 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:08:49.902 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:08:49.902 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:49.904 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 15.0549ms
+2025-01-28 13:08:50.601 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:08:50.603 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:50.604 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:08:50.606 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:08:50.608 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:08:50.611 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:50.613 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 12.2894ms
+2025-01-28 13:08:51.502 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:08:51.503 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:51.504 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:08:51.505 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:08:51.507 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:08:51.507 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:51.509 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 7.0778ms
+2025-01-28 13:08:52.201 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:08:52.203 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:52.203 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:08:52.205 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:08:52.207 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:08:52.209 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:52.211 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 10.6817ms
+2025-01-28 13:08:52.907 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:08:52.913 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:52.916 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:08:52.918 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:08:52.920 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:08:52.922 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:08:52.923 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 15.6275ms
+2025-01-28 13:08:56.553 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 13:08:56.557 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 13:08:56.580 -05:00 [INF] Cache miss for key: allUsers
+2025-01-28 13:08:56.585 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 13:08:56.586 -05:00 [INF] Cache set for key: allUsers
+2025-01-28 13:08:56.589 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 13:08:56.589 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 36.0849ms
+2025-01-28 13:08:58.009 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 13:08:58.013 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 13:08:58.014 -05:00 [INF] Cache hit for key: allUsers
+2025-01-28 13:08:58.016 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 13:08:58.018 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 8.7371ms
+2025-01-28 13:08:58.832 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 13:08:58.834 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 13:08:58.835 -05:00 [INF] Cache hit for key: allUsers
+2025-01-28 13:08:58.836 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 13:08:58.837 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 4.7856ms
+2025-01-28 13:08:59.552 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 13:08:59.553 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 13:08:59.554 -05:00 [INF] Cache hit for key: allUsers
+2025-01-28 13:08:59.554 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 13:08:59.555 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 3.1993ms
+2025-01-28 13:09:02.025 -05:00 [INF] Application is shutting down...
+2025-01-28 13:09:25.024 -05:00 [INF] Registered 7 endpoints in 146 milliseconds.
+2025-01-28 13:09:25.061 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-28 13:09:25.103 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-28 13:09:25.104 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-28 13:09:25.104 -05:00 [INF] Hosting environment: Development
+2025-01-28 13:09:25.105 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-28 13:09:55.010 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/user/signup - application/json 101
+2025-01-28 13:09:55.025 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-28 13:09:55.043 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-01-28 13:09:55.046 -05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-01-28 13:09:55.049 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/user/signup - 401 0 null 39.6442ms
+2025-01-28 13:10:02.116 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/user/signup - application/json 101
+2025-01-28 13:10:02.168 -05:00 [INF] Executing endpoint 'HTTP: POST /api/user/signup'
+2025-01-28 13:10:02.666 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[@__req_Username_0='?', @__req_Email_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Users" AS u
+    WHERE u."Username" = @__req_Username_0 AND u."Email" = @__req_Email_1)
+2025-01-28 13:10:02.696 -05:00 [INF] Create user attempt failed: Invalid credentials for new user
+2025-01-28 13:10:02.698 -05:00 [INF] Executed endpoint 'HTTP: POST /api/user/signup'
+2025-01-28 13:10:02.703 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/user/signup - 400 null application/json; charset=utf-8 587.4592ms
+2025-01-28 13:10:13.362 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/user/signup - application/json 105
+2025-01-28 13:10:13.367 -05:00 [INF] Executing endpoint 'HTTP: POST /api/user/signup'
+2025-01-28 13:10:13.395 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__req_Username_0='?', @__req_Email_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Users" AS u
+    WHERE u."Username" = @__req_Username_0 AND u."Email" = @__req_Email_1)
+2025-01-28 13:10:13.495 -05:00 [INF] Executed DbCommand (13ms) [Parameters=[@p0='?', @p1='?', @p2='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Users" ("Email", "Password", "Username")
+VALUES (@p0, @p1, @p2)
+RETURNING "Id";
+2025-01-28 13:10:13.508 -05:00 [INF] New user created successfully! Username: Antonia, Email: Antwoman@gmail.com
+2025-01-28 13:10:13.509 -05:00 [INF] Executed endpoint 'HTTP: POST /api/user/signup'
+2025-01-28 13:10:13.510 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/user/signup - 201 null application/json; charset=utf-8 147.9778ms
+2025-01-28 13:10:20.897 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 13:10:20.899 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 13:10:20.906 -05:00 [INF] Cache miss for key: allUsers
+2025-01-28 13:10:20.972 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-01-28 13:10:20.977 -05:00 [INF] Cache set for key: allUsers
+2025-01-28 13:10:20.980 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 13:10:20.981 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 83.209ms
+2025-01-28 13:10:26.395 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 13:10:26.397 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 13:10:26.398 -05:00 [INF] Cache hit for key: allUsers
+2025-01-28 13:10:26.399 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 13:10:26.400 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 4.0715ms
+2025-01-28 13:10:27.367 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-01-28 13:10:27.368 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-01-28 13:10:27.369 -05:00 [INF] Cache hit for key: allUsers
+2025-01-28 13:10:27.369 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-01-28 13:10:27.369 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 2.9525ms
+2025-01-28 13:10:30.635 -05:00 [INF] Application is shutting down...
+2025-01-28 13:10:52.997 -05:00 [INF] Registered 7 endpoints in 148 milliseconds.
+2025-01-28 13:10:53.035 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-28 13:10:53.075 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-28 13:10:53.075 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-28 13:10:53.076 -05:00 [INF] Hosting environment: Development
+2025-01-28 13:10:53.076 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-28 13:11:00.692 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:11:00.707 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-28 13:11:00.767 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:01.255 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:11:01.316 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:01.324 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 633.0377ms
+2025-01-28 13:11:02.365 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:11:02.370 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:02.384 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:11:02.386 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:02.387 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 22.2251ms
+2025-01-28 13:11:03.300 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:11:03.306 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:03.345 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:11:03.346 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:03.347 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 47.4545ms
+2025-01-28 13:11:04.146 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:11:04.151 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:04.158 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:11:04.162 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:04.163 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 17.4075ms
+2025-01-28 13:11:04.961 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:11:04.965 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:04.966 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:11:04.967 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:04.968 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 6.3496ms
+2025-01-28 13:11:06.045 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:11:06.046 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:06.047 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:11:06.049 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:06.049 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 4.4797ms
+2025-01-28 13:11:06.802 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:11:06.806 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:06.810 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:11:06.811 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:06.811 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 9.0772ms
+2025-01-28 13:11:07.661 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:11:07.662 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:07.664 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:11:07.666 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:07.668 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 7.4212ms
+2025-01-28 13:11:08.450 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:11:08.452 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:08.453 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:11:08.456 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:08.457 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 7.083ms
+2025-01-28 13:11:09.194 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:11:09.196 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:09.198 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:11:09.199 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:09.200 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 5.6493ms
+2025-01-28 13:11:18.551 -05:00 [INF] Application is shutting down...
+2025-01-28 13:11:24.733 -05:00 [INF] Registered 7 endpoints in 174 milliseconds.
+2025-01-28 13:11:24.776 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-28 13:11:24.816 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-28 13:11:24.817 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-28 13:11:24.817 -05:00 [INF] Hosting environment: Development
+2025-01-28 13:11:24.817 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-28 13:11:28.946 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:11:28.961 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-28 13:11:29.021 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:29.056 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:11:29.488 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:11:29.522 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:11:29.547 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:29.552 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 606.4522ms
+2025-01-28 13:11:30.353 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:11:30.356 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:30.357 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:11:30.369 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:11:30.371 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:11:30.371 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:30.372 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 19.3802ms
+2025-01-28 13:11:31.187 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:11:31.192 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:31.193 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:11:31.230 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:11:31.231 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:11:31.231 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:31.232 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 44.8293ms
+2025-01-28 13:11:31.956 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:11:31.958 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:31.959 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:11:31.960 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:11:31.961 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:11:31.961 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:31.963 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 6.8835ms
+2025-01-28 13:11:32.668 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:11:32.670 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:32.671 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:11:32.673 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:11:32.674 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:11:32.674 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:32.675 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 6.7911ms
+2025-01-28 13:11:33.390 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:11:33.393 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:33.394 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:11:33.395 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:11:33.400 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:11:33.400 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:33.401 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 11.2789ms
+2025-01-28 13:11:34.122 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:11:34.124 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:34.125 -05:00 [INF] Cache miss for key: userId
+2025-01-28 13:11:34.126 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:11:34.128 -05:00 [INF] Cache set for key: userId
+2025-01-28 13:11:34.129 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:11:34.131 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 9.2819ms
+2025-01-28 13:13:07.893 -05:00 [INF] Application is shutting down...
+2025-01-28 13:13:10.587 -05:00 [INF] Registered 7 endpoints in 145 milliseconds.
+2025-01-28 13:13:10.628 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-01-28 13:13:10.667 -05:00 [INF] Now listening on: http://localhost:5232
+2025-01-28 13:13:10.668 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-01-28 13:13:10.669 -05:00 [INF] Hosting environment: Development
+2025-01-28 13:13:10.669 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-01-28 13:13:18.595 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:13:18.610 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-01-28 13:13:18.675 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:18.711 -05:00 [INF] Cache miss for key: user39
+2025-01-28 13:13:19.209 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:13:19.245 -05:00 [INF] Cache set for key: user39
+2025-01-28 13:13:19.269 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:19.275 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 680.2056ms
+2025-01-28 13:13:20.406 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:13:20.411 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:20.413 -05:00 [INF] Cache miss for key: user39
+2025-01-28 13:13:20.435 -05:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:13:20.436 -05:00 [INF] Cache set for key: user39
+2025-01-28 13:13:20.437 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:20.438 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 32.9027ms
+2025-01-28 13:13:21.967 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:13:21.971 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:21.972 -05:00 [INF] Cache miss for key: user39
+2025-01-28 13:13:22.018 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:13:22.019 -05:00 [INF] Cache set for key: user39
+2025-01-28 13:13:22.020 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:22.021 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 53.4907ms
+2025-01-28 13:13:23.007 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/39 - null null
+2025-01-28 13:13:23.009 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:23.009 -05:00 [INF] Cache miss for key: user39
+2025-01-28 13:13:23.011 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:13:23.012 -05:00 [INF] Cache set for key: user39
+2025-01-28 13:13:23.013 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:23.013 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/39 - 200 null application/json; charset=utf-8 6.0893ms
+2025-01-28 13:13:27.037 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/45 - null null
+2025-01-28 13:13:27.039 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:27.040 -05:00 [INF] Cache miss for key: user45
+2025-01-28 13:13:27.042 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:13:27.043 -05:00 [INF] Cache set for key: user45
+2025-01-28 13:13:27.043 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:27.044 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/45 - 200 null application/json; charset=utf-8 6.4226ms
+2025-01-28 13:13:28.693 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/45 - null null
+2025-01-28 13:13:28.698 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:28.700 -05:00 [INF] Cache miss for key: user45
+2025-01-28 13:13:28.704 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:13:28.707 -05:00 [INF] Cache set for key: user45
+2025-01-28 13:13:28.708 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:28.710 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/45 - 200 null application/json; charset=utf-8 17.1112ms
+2025-01-28 13:13:29.485 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/45 - null null
+2025-01-28 13:13:29.491 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:29.494 -05:00 [INF] Cache miss for key: user45
+2025-01-28 13:13:29.497 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:13:29.500 -05:00 [INF] Cache set for key: user45
+2025-01-28 13:13:29.501 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:29.502 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/45 - 200 null application/json; charset=utf-8 17.1088ms
+2025-01-28 13:13:30.149 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/45 - null null
+2025-01-28 13:13:30.151 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:30.153 -05:00 [INF] Cache miss for key: user45
+2025-01-28 13:13:30.155 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:13:30.158 -05:00 [INF] Cache set for key: user45
+2025-01-28 13:13:30.160 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:30.161 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/45 - 200 null application/json; charset=utf-8 11.645ms
+2025-01-28 13:13:33.585 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/1 - null null
+2025-01-28 13:13:33.589 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:33.591 -05:00 [INF] Cache miss for key: user1
+2025-01-28 13:13:33.595 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:13:33.599 -05:00 [INF] Cache set for key: user1
+2025-01-28 13:13:33.601 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:33.602 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/1 - 200 null application/json; charset=utf-8 16.8165ms
+2025-01-28 13:13:34.578 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/1 - null null
+2025-01-28 13:13:34.580 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:34.581 -05:00 [INF] Cache miss for key: user1
+2025-01-28 13:13:34.582 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:13:34.584 -05:00 [INF] Cache set for key: user1
+2025-01-28 13:13:34.585 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:34.586 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/1 - 200 null application/json; charset=utf-8 7.6003ms
+2025-01-28 13:13:35.261 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/1 - null null
+2025-01-28 13:13:35.264 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:35.265 -05:00 [INF] Cache miss for key: user1
+2025-01-28 13:13:35.267 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:13:35.269 -05:00 [INF] Cache set for key: user1
+2025-01-28 13:13:35.273 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:35.275 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/1 - 200 null application/json; charset=utf-8 14.1217ms
+2025-01-28 13:13:37.924 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/1 - null null
+2025-01-28 13:13:37.928 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:37.929 -05:00 [INF] Cache miss for key: user1
+2025-01-28 13:13:37.931 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:13:37.934 -05:00 [INF] Cache set for key: user1
+2025-01-28 13:13:37.935 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:37.935 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/1 - 200 null application/json; charset=utf-8 11.4333ms
+2025-01-28 13:13:38.623 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/1 - null null
+2025-01-28 13:13:38.624 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:38.625 -05:00 [INF] Cache miss for key: user1
+2025-01-28 13:13:38.626 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-01-28 13:13:38.627 -05:00 [INF] Cache set for key: user1
+2025-01-28 13:13:38.627 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-01-28 13:13:38.628 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/1 - 200 null application/json; charset=utf-8 4.9449ms
+2025-01-28 13:16:52.101 -05:00 [INF] Application is shutting down...
