@@ -1,3 +1,6 @@
 /obj
 **/obj/
 .fake
+.docker-compose.yml
+.dockerfile
+.dockerignore

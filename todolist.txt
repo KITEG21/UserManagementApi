@@ -18,7 +18,7 @@ Orden sugerido
 4 Definir las clases del dominio(Principalmente la que va a ser usada por identity para la autenticacion)                       X
 5 Realizar la configuracion de las entidades del dominio(usando IEntityTypeConfiguration)                                       X
 6 Implementar la autenticacion/autorizacion                                                                                     X
-7 Cambiar el mock del enpoint implementado por la conexion con la base de datos                                               X
+7 Cambiar el mock del enpoint implementado por la conexion con la base de datos                                                 X
 
 
 .Api --> Controllers

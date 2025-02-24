@@ -1198,7 +1198,8 @@
           "Microsoft.IdentityModel.Tokens": "8.3.1",
           "Riok.Mapperly": "4.1.1",
           "StackExchange.Redis": "2.8.24",
-          "System.IdentityModel.Tokens.Jwt": "8.3.1"
+          "System.IdentityModel.Tokens.Jwt": "8.3.1",
+          "Serilog": "4.2.0"
         },
         "runtime": {
           "FullWebApi.Application.dll": {
