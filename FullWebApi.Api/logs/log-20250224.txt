@@ -437,3 +437,30 @@ FROM "Users" AS u
 2025-02-24 16:12:19.549 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
 2025-02-24 16:12:19.550 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 96.6967ms
 2025-02-24 16:13:24.482 -05:00 [INF] Application is shutting down...
+2025-02-24 18:12:01.719 -05:00 [INF] Registered 7 endpoints in 170 milliseconds.
+2025-02-24 18:12:01.757 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 18:12:01.799 -05:00 [INF] Now listening on: http://localhost:5232
+2025-02-24 18:12:01.800 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 18:12:01.801 -05:00 [INF] Hosting environment: Development
+2025-02-24 18:12:01.801 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-02-24 18:12:07.572 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/ - null null
+2025-02-24 18:12:07.594 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-02-24 18:12:07.614 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/ - 404 0 null 42.3182ms
+2025-02-24 18:12:07.619 -05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5232/, Response status code: 404
+2025-02-24 18:12:12.632 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/swagger/index.html - null null
+2025-02-24 18:12:12.680 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/swagger/index.html - 200 null text/html;charset=utf-8 48.6231ms
+2025-02-24 18:12:12.702 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/swagger/index.js - null null
+2025-02-24 18:12:12.704 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/swagger/index.js - 200 null application/javascript;charset=utf-8 2.2818ms
+2025-02-24 18:12:12.797 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/swagger/v1/swagger.json - null null
+2025-02-24 18:12:12.803 -05:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-02-24 18:12:12.868 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 70.5126ms
+2025-02-24 18:12:40.587 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/swagger/v1/swagger.json - null null
+2025-02-24 18:12:40.592 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 4.8879ms
+2025-02-24 18:13:31.109 -05:00 [INF] Application is shutting down...
+2025-02-24 18:40:57.284 -05:00 [INF] Registered 7 endpoints in 177 milliseconds.
+2025-02-24 18:40:57.322 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-02-24 18:40:57.366 -05:00 [INF] Now listening on: http://localhost:5232
+2025-02-24 18:40:57.367 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-02-24 18:40:57.368 -05:00 [INF] Hosting environment: Development
+2025-02-24 18:40:57.368 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-02-24 18:41:04.757 -05:00 [INF] Application is shutting down...
