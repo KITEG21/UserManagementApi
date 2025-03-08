@@ -1,0 +1,275 @@
+2025-03-02 20:12:56.920 -05:00 [INF] Registered 7 endpoints in 227 milliseconds.
+2025-03-02 20:12:56.963 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-02 20:12:57.021 -05:00 [INF] Now listening on: http://localhost:5232
+2025-03-02 20:12:57.022 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-02 20:12:57.023 -05:00 [INF] Hosting environment: Development
+2025-03-02 20:12:57.023 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-03-02 20:13:39.870 -05:00 [INF] Application is shutting down...
+2025-03-02 20:41:13.343 -05:00 [INF] Registered 7 endpoints in 158 milliseconds.
+2025-03-02 20:41:13.388 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-02 20:41:13.432 -05:00 [INF] Now listening on: http://localhost:5232
+2025-03-02 20:41:13.433 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-02 20:41:13.433 -05:00 [INF] Hosting environment: Development
+2025-03-02 20:41:13.434 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-03-02 20:42:42.602 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 62
+2025-03-02 20:42:42.631 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-03-02 20:42:42.656 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-03-02 20:42:43.315 -05:00 [INF] Executed DbCommand (28ms) [Parameters=[@__req_Username_0='?', @__req_Password_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0 AND a."Password" = @__req_Password_1
+LIMIT 1
+2025-03-02 20:42:43.376 -05:00 [INF] User logged successfully. Username: Kiteg
+2025-03-02 20:42:43.379 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-03-02 20:42:43.384 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 200 null application/json; charset=utf-8 783.9383ms
+2025-03-02 20:42:58.524 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/1 - null null
+2025-03-02 20:42:58.568 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-03-02 20:42:58.574 -05:00 [INF] Cache miss for key: user1
+2025-03-02 20:42:58.588 -05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-03-02 20:42:58.595 -05:00 [INF] Cache set for key: user1
+2025-03-02 20:42:58.600 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-03-02 20:42:58.601 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/1 - 200 null application/json; charset=utf-8 78.7307ms
+2025-03-02 20:43:08.654 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-03-02 20:43:08.665 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-03-02 20:43:08.684 -05:00 [INF] Cache miss for key: allUsers
+2025-03-02 20:43:08.724 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-03-02 20:43:08.726 -05:00 [INF] Cache set for key: allUsers
+2025-03-02 20:43:08.729 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-03-02 20:43:08.730 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 75.7797ms
+2025-03-02 20:43:21.631 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/user/signup - application/json 93
+2025-03-02 20:43:21.670 -05:00 [INF] Executing endpoint 'HTTP: POST /api/user/signup'
+2025-03-02 20:43:21.703 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__req_Username_0='?', @__req_Email_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Users" AS u
+    WHERE u."Username" = @__req_Username_0 AND u."Email" = @__req_Email_1)
+2025-03-02 20:43:21.712 -05:00 [INF] Create user attempt failed: Invalid credentials for new user
+2025-03-02 20:43:21.713 -05:00 [INF] Executed endpoint 'HTTP: POST /api/user/signup'
+2025-03-02 20:43:21.714 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/user/signup - 400 null application/json; charset=utf-8 83.1065ms
+2025-03-02 20:46:41.508 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/updateuser/1 - null 0
+2025-03-02 20:46:41.515 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/updateuser/1 - 404 0 null 7.045ms
+2025-03-02 20:46:41.523 -05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: PUT http://localhost:5232/api/updateuser/1, Response status code: 404
+2025-03-02 20:48:14.770 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/updateuser/1 - application/json 95
+2025-03-02 20:48:14.777 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/updateuser/1 - 404 0 null 7.1101ms
+2025-03-02 20:48:14.785 -05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: PUT http://localhost:5232/api/updateuser/1, Response status code: 404
+2025-03-02 20:48:25.343 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/updateuser/1 - application/json 95
+2025-03-02 20:48:25.345 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/updateuser/1 - 404 0 null 2.0315ms
+2025-03-02 20:48:25.349 -05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: PUT http://localhost:5232/api/updateuser/1, Response status code: 404
+2025-03-02 20:48:36.752 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/updateuser/1 - application/json 95
+2025-03-02 20:48:36.756 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/updateuser/1 - 404 0 null 4.2091ms
+2025-03-02 20:48:36.759 -05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: PUT http://localhost:5232/api/updateuser/1, Response status code: 404
+2025-03-02 20:48:37.852 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/updateuser/1 - application/json 95
+2025-03-02 20:48:37.854 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/updateuser/1 - 404 0 null 1.9869ms
+2025-03-02 20:48:37.858 -05:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: PUT http://localhost:5232/api/updateuser/1, Response status code: 404
+2025-03-02 20:49:03.855 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/1 - application/json 95
+2025-03-02 20:49:03.860 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-03-02 20:49:03.864 -05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-03-02 20:49:03.864 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/1 - 401 0 null 8.9377ms
+2025-03-02 20:49:12.236 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/1 - application/json 95
+2025-03-02 20:49:12.239 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-03-02 20:49:12.274 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__req_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__req_Id_0
+LIMIT 1
+2025-03-02 20:49:12.320 -05:00 [INF] Executed DbCommand (13ms) [Parameters=[@p3='?' (DbType = Int32), @p0='?', @p1='?', @p2='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Users" SET "Email" = @p0, "Password" = @p1, "Username" = @p2
+WHERE "Id" = @p3;
+2025-03-02 20:49:12.328 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-03-02 20:49:12.329 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/1 - 200 null application/json; charset=utf-8 92.2595ms
+2025-03-02 20:49:18.756 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-03-02 20:49:18.764 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-03-02 20:49:18.770 -05:00 [INF] Cache miss for key: allUsers
+2025-03-02 20:49:18.777 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-03-02 20:49:18.781 -05:00 [INF] Cache set for key: allUsers
+2025-03-02 20:49:18.783 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-03-02 20:49:18.784 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 28.6038ms
+2025-03-02 20:49:58.718 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 66
+2025-03-02 20:49:58.728 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-03-02 20:49:58.746 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__req_Username_0='?', @__req_Password_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0 AND a."Password" = @__req_Password_1
+LIMIT 1
+2025-03-02 20:49:58.749 -05:00 [INF] Login attempt failed: Invalid credentials. Username: GabeRguez, Password: 1234567890
+2025-03-02 20:49:58.750 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-03-02 20:49:58.751 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 401 null application/json; charset=utf-8 33.2536ms
+2025-03-02 20:50:00.283 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 66
+2025-03-02 20:50:00.289 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-03-02 20:50:00.296 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__req_Username_0='?', @__req_Password_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0 AND a."Password" = @__req_Password_1
+LIMIT 1
+2025-03-02 20:50:00.299 -05:00 [INF] Login attempt failed: Invalid credentials. Username: GabeRguez, Password: 1234567890
+2025-03-02 20:50:00.300 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-03-02 20:50:00.302 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 401 null application/json; charset=utf-8 18.5793ms
+2025-03-02 20:50:46.540 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/signup - application/json 89
+2025-03-02 20:50:46.541 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/signup'
+2025-03-02 20:50:46.549 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__req_Username_0='?', @__req_Email_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AdminUsers" AS a
+    WHERE a."Username" = @__req_Username_0 OR a."Email" = @__req_Email_1)
+2025-03-02 20:50:46.553 -05:00 [INF] SignUp attempt failed: Validation errors. Username: gabriel, Email: galaumati2@gmail.com, Errors: ["Password must have more than 6 characters"]
+2025-03-02 20:50:46.556 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/signup'
+2025-03-02 20:50:46.557 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/signup - 400 null application/json; charset=utf-8 17.7427ms
+2025-03-02 20:50:54.048 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/signup - application/json 93
+2025-03-02 20:50:54.049 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/signup'
+2025-03-02 20:50:54.052 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__req_Username_0='?', @__req_Email_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "AdminUsers" AS a
+    WHERE a."Username" = @__req_Username_0 OR a."Email" = @__req_Email_1)
+2025-03-02 20:50:54.128 -05:00 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?', @p1='?', @p2='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AdminUsers" ("Email", "Password", "Username")
+VALUES (@p0, @p1, @p2)
+RETURNING "Id";
+2025-03-02 20:50:54.136 -05:00 [INF] New admin user signed up successfully
+2025-03-02 20:50:54.136 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/signup'
+2025-03-02 20:50:54.137 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/signup - 200 null application/json; charset=utf-8 89.0329ms
+2025-03-02 20:51:12.149 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 61
+2025-03-02 20:51:12.153 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-03-02 20:51:12.159 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__req_Username_0='?', @__req_Password_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0 AND a."Password" = @__req_Password_1
+LIMIT 1
+2025-03-02 20:51:12.165 -05:00 [INF] Login attempt failed: Invalid credentials. Username: gabriel, Password: 123abcd
+2025-03-02 20:51:12.169 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-03-02 20:51:12.175 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 401 null application/json; charset=utf-8 25.8366ms
+2025-03-02 21:11:48.691 -05:00 [INF] Application is shutting down...
+2025-03-02 21:13:16.923 -05:00 [INF] Registered 7 endpoints in 185 milliseconds.
+2025-03-02 21:13:16.966 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-02 21:13:17.013 -05:00 [INF] Now listening on: http://localhost:5232
+2025-03-02 21:13:17.014 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-02 21:13:17.015 -05:00 [INF] Hosting environment: Development
+2025-03-02 21:13:17.015 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-03-02 21:13:23.103 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 61
+2025-03-02 21:13:23.127 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-03-02 21:13:23.141 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-03-02 21:13:23.494 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-03-02 21:13:23.496 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The LINQ expression 'DbSet<AdminUser>()
+    .Where(a => a.Username == __req_Username_0 && (int)___passwordHasher_1.VerifyHashedPassword(
+        user: __req_2, 
+        hashedPassword: a.Password, 
+        providedPassword: __req_Password_3) == 1)' could not be translated. Additional information: Translation of method 'Microsoft.AspNetCore.Identity.IPasswordHasher<FullWebApi.Domain.Models.Auth.LoginRequest>.VerifyHashedPassword' failed. If this method can be mapped to your custom function, see https://go.microsoft.com/fwlink/?linkid=2132413 for more information. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.RelationalQueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass12_0`1.<ExecuteAsync>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, LambdaExpression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at FullWebApi.Api.EndPoints.Auth.LoginEndpoint.HandleAsync(LoginRequest req, CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\Auth\LoginEndpoint.cs:line 36
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-03-02 21:13:23.517 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 500 null text/plain; charset=utf-8 414.3479ms
+2025-03-02 21:37:44.639 -05:00 [INF] Application is shutting down...
+2025-03-02 21:51:43.130 -05:00 [INF] Registered 7 endpoints in 151 milliseconds.
+2025-03-02 21:51:43.175 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-02 21:51:43.218 -05:00 [INF] Now listening on: http://localhost:5232
+2025-03-02 21:51:43.219 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-02 21:51:43.220 -05:00 [INF] Hosting environment: Development
+2025-03-02 21:51:43.221 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-03-02 21:51:50.903 -05:00 [INF] Application is shutting down...
+2025-03-02 21:57:47.174 -05:00 [INF] Registered 7 endpoints in 151 milliseconds.
+2025-03-02 21:57:47.213 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-02 21:57:47.255 -05:00 [INF] Now listening on: http://localhost:5232
+2025-03-02 21:57:47.256 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-02 21:57:47.257 -05:00 [INF] Hosting environment: Development
+2025-03-02 21:57:47.257 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-03-02 21:57:55.094 -05:00 [INF] Application is shutting down...
+2025-03-02 22:03:38.922 -05:00 [INF] Registered 7 endpoints in 158 milliseconds.
+2025-03-02 22:03:38.960 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-02 22:03:39.011 -05:00 [INF] Now listening on: http://localhost:5232
+2025-03-02 22:03:39.012 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-02 22:03:39.013 -05:00 [INF] Hosting environment: Development
+2025-03-02 22:03:39.014 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-03-02 22:03:40.811 -05:00 [INF] Application is shutting down...
+2025-03-02 22:04:03.432 -05:00 [INF] Registered 7 endpoints in 148 milliseconds.
+2025-03-02 22:04:03.469 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-02 22:04:03.512 -05:00 [INF] Now listening on: http://localhost:5232
+2025-03-02 22:04:03.513 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-02 22:04:03.514 -05:00 [INF] Hosting environment: Development
+2025-03-02 22:04:03.514 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-03-02 22:04:04.300 -05:00 [INF] Application is shutting down...
+2025-03-02 22:04:24.541 -05:00 [INF] Registered 7 endpoints in 153 milliseconds.
+2025-03-02 22:04:24.581 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-02 22:04:24.622 -05:00 [INF] Now listening on: http://localhost:5232
+2025-03-02 22:04:24.622 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-02 22:04:24.623 -05:00 [INF] Hosting environment: Development
+2025-03-02 22:04:24.624 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-03-02 22:04:29.333 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 61
+2025-03-02 22:04:29.358 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-03-02 22:04:29.374 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-03-02 22:04:29.747 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-03-02 22:04:29.749 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: The LINQ expression 'DbSet<AdminUser>()
+    .Where(a => a.Username == __req_Username_0 && LoginEndpoint.CheckPassword(
+        req: __req_1, 
+        hashedPassword: a.Password, 
+        passwordToCheck: __req_Password_2))' could not be translated. Additional information: Translation of method 'FullWebApi.Api.EndPoints.Auth.LoginEndpoint.CheckPassword' failed. If this method can be mapped to your custom function, see https://go.microsoft.com/fwlink/?linkid=2132413 for more information. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.RelationalQueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass12_0`1.<ExecuteAsync>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, LambdaExpression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at FullWebApi.Api.EndPoints.Auth.LoginEndpoint.HandleAsync(LoginRequest req, CancellationToken ct) in C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api\EndPoints\Auth\LoginEndpoint.cs:line 46
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at FastEndpoints.Endpoint`2.ExecAsync(CancellationToken ct)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2025-03-02 22:04:29.771 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 500 null text/plain; charset=utf-8 438.2601ms
+2025-03-02 22:04:41.811 -05:00 [INF] Application is shutting down...
+2025-03-02 22:05:38.067 -05:00 [INF] Registered 7 endpoints in 153 milliseconds.
+2025-03-02 22:05:38.106 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-02 22:05:38.150 -05:00 [INF] Now listening on: http://localhost:5232
+2025-03-02 22:05:38.151 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-02 22:05:38.151 -05:00 [INF] Hosting environment: Development
+2025-03-02 22:05:38.152 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-03-02 22:05:41.425 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 61
+2025-03-02 22:05:41.446 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-03-02 22:05:41.461 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-03-02 22:05:41.971 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[@__req_Username_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0
+LIMIT 1
+2025-03-02 22:05:42.081 -05:00 [INF] User logged successfully. Username: gabriel
+2025-03-02 22:05:42.084 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-03-02 22:05:42.092 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 200 null application/json; charset=utf-8 667.0216ms
+2025-03-02 22:06:18.436 -05:00 [INF] Application is shutting down...

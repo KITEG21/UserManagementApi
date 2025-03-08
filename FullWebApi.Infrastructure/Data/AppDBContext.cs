@@ -7,6 +7,7 @@ using FullWebApi.Domain.Models;
 using FullWebApi.Infrastructure.Configurations;
 using FullWebApi.Domain.Models.Auth;
 
+
 namespace FullWebApi.Infrastructure.Data;
 
 public class AppDBContext : DbContext

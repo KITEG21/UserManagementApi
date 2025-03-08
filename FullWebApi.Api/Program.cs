@@ -13,6 +13,10 @@ using Microsoft.AspNetCore.Identity;
 using FullWebApi.Domain.Models.Auth;
 using Serilog;
 using Microsoft.OpenApi.Models;
+using FullWebApi.Infrastructure.Repositories;
+using FullWebApi.Infrastructure.DependencyInjection;
+using FullWebApi.Infrastructure.UnitOfWork;
+using FullWebApi.Infrastructure.Seeders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,7 +50,7 @@ builder.Services.AddAuthentication(options =>
 });
 
 // Add Swagger
-builder.Services.AddEndpointsApiExplorer(); // Required for Swagger
+builder.Services.AddEndpointsApiExplorer(); 
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "FullWebApi API", Version = "v1" });
@@ -73,16 +77,21 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Add FastEndpoints and other services
+// Adding services to the container
 builder.Services.AddFastEndpoints();
 builder.Services.AddValidatorsFromAssemblyContaining<UserValidator>();
 builder.Services.AddAuthorization();
-
 builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<UserMapper>();
 builder.Services.AddScoped<ITokenServices, TokenServices>();
+builder.Services.AddScoped<IPasswordHasher<LoginRequest>, PasswordHasher<LoginRequest>>();
 builder.Services.AddScoped<IPasswordHasher<AdminUser>, PasswordHasher<AdminUser>>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<SeederRunner>();
+builder.Services.AddScoped<ISeeder, UserSeeder>();
 builder.Services.AddMemoryCache();
+builder.Services.AddInfrastructure();//User repository services
+
 
 // Configure Database Context
 builder.Services.AddDbContext<AppDBContext>(options =>
@@ -90,6 +99,12 @@ builder.Services.AddDbContext<AppDBContext>(options =>
     b => b.MigrationsAssembly("FullWebApi.Api")));
 
 var app = builder.Build();
+
+//Adding seeders services
+using(var scope = app.Services.CreateScope()){
+    var seederRunner = scope.ServiceProvider.GetRequiredService<SeederRunner>();
+    await seederRunner.RunAsync(); 
+}
 
 // Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())

@@ -21,6 +21,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FullWebApi.Domain\FullWebApi.Domain.csproj" />
+    <ProjectReference Include="..\FullWebApi.Application\FullWebApi.Application.csproj" />
+
+
+
+
   </ItemGroup>
 
 </Project>

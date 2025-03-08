@@ -26,6 +26,12 @@ Orden sugerido
 .Domain --> Objects
 .Infrastructure --> Repositories and DB
 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+improve security and caching(redis)
+
+fix the https security
+
+
 
 
 Package and tools for the proyect

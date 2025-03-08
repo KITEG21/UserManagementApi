@@ -9,19 +9,20 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
+using FullWebApi.Domain.Models.Auth;
+using Microsoft.AspNetCore.Identity;
 
 namespace FullWebApi.Application.Services;
 
 public class TokenServices : ITokenServices
 {
     private readonly IConfiguration _configuration;
-    //IConfig DI
-  public TokenServices(IConfiguration configuration)
+
+    public TokenServices(IConfiguration configuration)
   {
     _configuration = configuration;
   }
-
-  public string GenerateToken(string username, string role)
+    public string GenerateToken(string username, string role)
   {
     //the ArgumentsNullExceptions are throw to avoid warnings about the chance of its value being null
     var jwtSettings = _configuration.GetSection("Jwt");

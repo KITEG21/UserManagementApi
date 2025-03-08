@@ -1,0 +1,333 @@
+2025-03-04 22:45:09.512 -05:00 [INF] Registered 7 endpoints in 231 milliseconds.
+2025-03-04 22:45:09.552 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-04 22:45:09.609 -05:00 [INF] Now listening on: http://localhost:5232
+2025-03-04 22:45:09.610 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-04 22:45:09.610 -05:00 [INF] Hosting environment: Development
+2025-03-04 22:45:09.611 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-03-04 22:45:21.011 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 54
+2025-03-04 22:45:21.038 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-03-04 22:45:21.063 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-03-04 22:45:21.821 -05:00 [INF] Executed DbCommand (29ms) [Parameters=[@__req_Username_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0
+LIMIT 1
+2025-03-04 22:45:21.931 -05:00 [INF] User logged successfully. Username: gabriel
+2025-03-04 22:45:21.934 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-03-04 22:45:21.941 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 200 null application/json; charset=utf-8 930.8448ms
+2025-03-04 22:45:31.076 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/user/signup - application/json 58
+2025-03-04 22:45:31.109 -05:00 [INF] Executing endpoint 'HTTP: POST /api/user/signup'
+2025-03-04 22:45:31.138 -05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__req_Username_0='?', @__req_Email_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Users" AS u
+    WHERE u."Username" = @__req_Username_0 AND u."Email" = @__req_Email_1)
+2025-03-04 22:45:31.153 -05:00 [INF] Create user attempt failed: Invalid credentials for new user
+2025-03-04 22:45:31.162 -05:00 [INF] Create user attempt failed: Invalid credentials for new user
+2025-03-04 22:45:31.162 -05:00 [INF] Executed endpoint 'HTTP: POST /api/user/signup'
+2025-03-04 22:45:31.164 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/user/signup - 400 null application/json; charset=utf-8 88.5369ms
+2025-03-04 22:47:04.386 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/30 - null null
+2025-03-04 22:47:04.395 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '03/03/2025 18:55:25', Current time (UTC): '05/03/2025 3:47:04'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-03-04 22:47:04.404 -05:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '03/03/2025 18:55:25', Current time (UTC): '05/03/2025 3:47:04'.
+2025-03-04 22:47:04.405 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-03-04 22:47:04.409 -05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-03-04 22:47:04.410 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/30 - 401 0 null 23.6229ms
+2025-03-04 22:47:08.993 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/30 - null null
+2025-03-04 22:47:08.998 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-03-04 22:47:09.002 -05:00 [INF] Searching user with id: 30
+2025-03-04 22:47:09.003 -05:00 [INF] Cache miss for key: user30
+2025-03-04 22:47:09.042 -05:00 [INF] User found with id: 30
+2025-03-04 22:47:09.042 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-03-04 22:47:09.044 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-03-04 22:47:09.045 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/30 - 404 null application/json; charset=utf-8 51.8275ms
+2025-03-04 22:48:01.318 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/30 - null null
+2025-03-04 22:48:01.320 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-03-04 22:48:01.321 -05:00 [INF] Searching user with id: 30
+2025-03-04 22:48:01.321 -05:00 [INF] Cache miss for key: user30
+2025-03-04 22:48:01.324 -05:00 [INF] User found with id: 30
+2025-03-04 22:48:01.324 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-03-04 22:48:01.326 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-03-04 22:48:01.327 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/30 - 404 null application/json; charset=utf-8 9.4339ms
+2025-03-04 22:48:20.906 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/1 - null null
+2025-03-04 22:48:20.909 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-03-04 22:48:20.909 -05:00 [INF] Searching user with id: 1
+2025-03-04 22:48:20.910 -05:00 [INF] Cache miss for key: user1
+2025-03-04 22:48:20.911 -05:00 [INF] User found with id: 1
+2025-03-04 22:48:20.911 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-03-04 22:48:20.919 -05:00 [INF] Cache set for key: user1
+2025-03-04 22:48:20.921 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-03-04 22:48:20.922 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/1 - 200 null application/json; charset=utf-8 15.3691ms
+2025-03-04 22:49:52.866 -05:00 [INF] Application is shutting down...
+2025-03-04 22:49:57.776 -05:00 [INF] Registered 7 endpoints in 176 milliseconds.
+2025-03-04 22:49:57.826 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-04 22:49:57.876 -05:00 [INF] Now listening on: http://localhost:5232
+2025-03-04 22:49:57.877 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-04 22:49:57.878 -05:00 [INF] Hosting environment: Development
+2025-03-04 22:49:57.878 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-03-04 22:50:05.245 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/30 - null null
+2025-03-04 22:50:05.269 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-03-04 22:50:05.324 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-03-04 22:50:05.357 -05:00 [INF] Searching user with id: 30
+2025-03-04 22:50:05.359 -05:00 [INF] Cache miss for key: user30
+2025-03-04 22:50:05.800 -05:00 [INF] Executed DbCommand (26ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-03-04 22:50:05.824 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-03-04 22:50:05.829 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/30 - 404 null application/json; charset=utf-8 584.7302ms
+2025-03-04 22:50:16.352 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/1 - null null
+2025-03-04 22:50:16.357 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-03-04 22:50:16.359 -05:00 [INF] Searching user with id: 1
+2025-03-04 22:50:16.360 -05:00 [INF] Cache miss for key: user1
+2025-03-04 22:50:16.371 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-03-04 22:50:16.396 -05:00 [INF] Cache set for key: user1
+2025-03-04 22:50:16.397 -05:00 [INF] User found with id: 1
+2025-03-04 22:50:16.409 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-03-04 22:50:16.410 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/1 - 200 null application/json; charset=utf-8 58.5896ms
+2025-03-04 22:50:41.236 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/30 - application/json 62
+2025-03-04 22:50:41.240 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '03/03/2025 19:10:48', Current time (UTC): '05/03/2025 3:50:41'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-03-04 22:50:41.248 -05:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '03/03/2025 19:10:48', Current time (UTC): '05/03/2025 3:50:41'.
+2025-03-04 22:50:41.250 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-03-04 22:50:41.254 -05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-03-04 22:50:41.254 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/30 - 401 0 null 18.5831ms
+2025-03-04 22:50:45.930 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/30 - application/json 62
+2025-03-04 22:50:45.932 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-03-04 22:50:45.944 -05:00 [INF] Attempting to update user with ID: 30
+2025-03-04 22:50:45.982 -05:00 [INF] User with ID: 30 successfully updated
+2025-03-04 22:50:45.982 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__req_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__req_Id_0
+LIMIT 1
+2025-03-04 22:50:45.990 -05:00 [INF] Update user failed attempt: The required user Id coulnd't be find. Id: 30
+2025-03-04 22:50:45.991 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-03-04 22:50:45.992 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/30 - 404 null application/json; charset=utf-8 62.7088ms
+2025-03-04 22:52:00.747 -05:00 [INF] Application is shutting down...
+2025-03-04 22:52:04.022 -05:00 [INF] Registered 7 endpoints in 160 milliseconds.
+2025-03-04 22:52:04.060 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-04 22:52:04.106 -05:00 [INF] Now listening on: http://localhost:5232
+2025-03-04 22:52:04.107 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-04 22:52:04.108 -05:00 [INF] Hosting environment: Development
+2025-03-04 22:52:04.108 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-03-04 22:52:09.125 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/30 - application/json 62
+2025-03-04 22:52:09.147 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-03-04 22:52:09.200 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-03-04 22:52:09.258 -05:00 [INF] Attempting to update user with ID: 30
+2025-03-04 22:52:09.620 -05:00 [INF] User with ID: 30 successfully updated
+2025-03-04 22:52:09.707 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__req_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__req_Id_0
+LIMIT 1
+2025-03-04 22:52:09.731 -05:00 [INF] Update user failed attempt: The required user Id coulnd't be find. Id: 30
+2025-03-04 22:52:09.733 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-03-04 22:52:09.739 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/30 - 404 null application/json; charset=utf-8 614.0129ms
+2025-03-04 22:53:07.426 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/30 - application/json 62
+2025-03-04 22:53:07.431 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-03-04 22:53:07.433 -05:00 [INF] Attempting to update user with ID: 30
+2025-03-04 22:53:07.443 -05:00 [INF] User with ID: 30 successfully updated
+2025-03-04 22:53:07.443 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__req_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__req_Id_0
+LIMIT 1
+2025-03-04 22:53:07.446 -05:00 [INF] Update user failed attempt: The required user Id coulnd't be find. Id: 30
+2025-03-04 22:53:07.446 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-03-04 22:53:07.447 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/30 - 404 null application/json; charset=utf-8 21.6151ms
+2025-03-04 22:54:29.243 -05:00 [INF] Application is shutting down...
+2025-03-04 22:54:32.747 -05:00 [INF] Registered 7 endpoints in 153 milliseconds.
+2025-03-04 22:54:32.786 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-04 22:54:32.829 -05:00 [INF] Now listening on: http://localhost:5232
+2025-03-04 22:54:32.830 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-04 22:54:32.830 -05:00 [INF] Hosting environment: Development
+2025-03-04 22:54:32.831 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-03-04 22:54:37.543 -05:00 [INF] Request starting HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/30 - application/json 62
+2025-03-04 22:54:37.564 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-03-04 22:54:37.618 -05:00 [INF] Executing endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-03-04 22:54:37.674 -05:00 [INF] Attempting to update user with ID: 30
+2025-03-04 22:54:38.121 -05:00 [INF] Executed DbCommand (25ms) [Parameters=[@__req_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__req_Id_0
+LIMIT 1
+2025-03-04 22:54:38.147 -05:00 [INF] Update user failed attempt: The required user Id coulnd't be find. Id: 30
+2025-03-04 22:54:38.150 -05:00 [INF] Executed endpoint 'HTTP: PUT api/user/updateuser/{id}'
+2025-03-04 22:54:38.157 -05:00 [INF] Request finished HTTP/1.1 PUT http://localhost:5232/api/user/updateuser/30 - 404 null application/json; charset=utf-8 614.8349ms
+2025-03-04 22:54:58.155 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-03-04 22:54:58.161 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '03/03/2025 21:22:13', Current time (UTC): '05/03/2025 3:54:58'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-03-04 22:54:58.172 -05:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '03/03/2025 21:22:13', Current time (UTC): '05/03/2025 3:54:58'.
+2025-03-04 22:54:58.173 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-03-04 22:54:58.183 -05:00 [INF] Getting all users
+2025-03-04 22:54:58.184 -05:00 [INF] Cache miss for key: allUsers
+2025-03-04 22:54:58.197 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-03-04 22:54:58.224 -05:00 [INF] Cache set for key: allUsers
+2025-03-04 22:54:58.225 -05:00 [INF] All users retrieved successfully
+2025-03-04 22:54:58.228 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-03-04 22:54:58.229 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 74.3994ms
+2025-03-04 22:55:19.128 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-03-04 22:55:19.133 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '03/03/2025 21:22:13', Current time (UTC): '05/03/2025 3:55:19'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-03-04 22:55:19.135 -05:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '03/03/2025 21:22:13', Current time (UTC): '05/03/2025 3:55:19'.
+2025-03-04 22:55:19.136 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-03-04 22:55:19.137 -05:00 [INF] Getting all users
+2025-03-04 22:55:19.137 -05:00 [INF] Cache hit for key: allUsers
+2025-03-04 22:55:19.138 -05:00 [INF] All users retrieved successfully
+2025-03-04 22:55:19.139 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-03-04 22:55:19.139 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 11.5682ms
+2025-03-04 22:55:23.857 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-03-04 22:55:23.859 -05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '03/03/2025 21:22:13', Current time (UTC): '05/03/2025 3:55:23'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-03-04 22:55:23.862 -05:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '03/03/2025 21:22:13', Current time (UTC): '05/03/2025 3:55:23'.
+2025-03-04 22:55:23.862 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-03-04 22:55:23.864 -05:00 [INF] Getting all users
+2025-03-04 22:55:23.864 -05:00 [INF] Cache hit for key: allUsers
+2025-03-04 22:55:23.865 -05:00 [INF] All users retrieved successfully
+2025-03-04 22:55:23.865 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-03-04 22:55:23.866 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 9.1745ms
+2025-03-04 22:55:55.953 -05:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/30 - null null
+2025-03-04 22:55:55.957 -05:00 [INF] Executing endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-03-04 22:55:55.959 -05:00 [INF] Attempting to delete user with ID: 30
+2025-03-04 22:55:56.006 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2025-03-04 22:55:56.008 -05:00 [WRN] Failed to delete user with ID: 30
+2025-03-04 22:55:56.008 -05:00 [INF] Delete user failed attempt: The required user Id couldn't be found. Id: 30
+2025-03-04 22:55:56.009 -05:00 [INF] Executed endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-03-04 22:55:56.010 -05:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/30 - 404 null application/json; charset=utf-8 56.6411ms
+2025-03-04 22:56:22.552 -05:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/51 - null null
+2025-03-04 22:56:22.556 -05:00 [INF] Executing endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-03-04 22:56:22.557 -05:00 [INF] Attempting to delete user with ID: 51
+2025-03-04 22:56:22.560 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2025-03-04 22:56:22.562 -05:00 [WRN] Failed to delete user with ID: 51
+2025-03-04 22:56:22.563 -05:00 [INF] Delete user failed attempt: The required user Id couldn't be found. Id: 51
+2025-03-04 22:56:22.564 -05:00 [INF] Executed endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-03-04 22:56:22.565 -05:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/51 - 404 null application/json; charset=utf-8 12.2222ms
+2025-03-04 22:56:30.337 -05:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/20 - null null
+2025-03-04 22:56:30.339 -05:00 [INF] Executing endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-03-04 22:56:30.341 -05:00 [INF] Attempting to delete user with ID: 20
+2025-03-04 22:56:30.342 -05:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2025-03-04 22:56:30.392 -05:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Users"
+WHERE "Id" = @p0;
+2025-03-04 22:56:30.398 -05:00 [INF] User with ID: 20 successfully deleted
+2025-03-04 22:56:30.398 -05:00 [INF] User deleted successfully. Id: 20
+2025-03-04 22:56:30.400 -05:00 [INF] Executed endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-03-04 22:56:30.401 -05:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/20 - 200 null application/json; charset=utf-8 64.4651ms
+2025-03-04 22:57:19.131 -05:00 [INF] Application is shutting down...
+2025-03-04 22:57:22.459 -05:00 [INF] Registered 7 endpoints in 177 milliseconds.
+2025-03-04 22:57:22.496 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-04 22:57:22.540 -05:00 [INF] Now listening on: http://localhost:5232
+2025-03-04 22:57:22.541 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-04 22:57:22.541 -05:00 [INF] Hosting environment: Development
+2025-03-04 22:57:22.542 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-03-04 22:57:25.924 -05:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/20 - null null
+2025-03-04 22:57:25.945 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-03-04 22:57:26.000 -05:00 [INF] Executing endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-03-04 22:57:26.033 -05:00 [INF] Attempting to delete user with ID: 20
+2025-03-04 22:57:26.473 -05:00 [INF] Executed DbCommand (24ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__p_0
+LIMIT 1
+2025-03-04 22:57:26.484 -05:00 [WRN] Failed to delete user with ID: 20
+2025-03-04 22:57:26.509 -05:00 [INF] Delete user failed attempt: The required user Id couldn't be found. Id: 20
+2025-03-04 22:57:26.511 -05:00 [INF] Executed endpoint 'HTTP: DELETE api/user/deleteuser/{id}'
+2025-03-04 22:57:26.516 -05:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5232/api/user/deleteuser/20 - 404 null application/json; charset=utf-8 593.1399ms
+2025-03-04 22:57:50.578 -05:00 [INF] Application is shutting down...
+2025-03-04 23:19:06.567 -05:00 [INF] Registered 7 endpoints in 158 milliseconds.
+2025-03-04 23:19:06.608 -05:00 [INF] User profile is available. Using 'C:\Users\Usuario\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-04 23:19:06.655 -05:00 [INF] Now listening on: http://localhost:5232
+2025-03-04 23:19:06.656 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-04 23:19:06.656 -05:00 [INF] Hosting environment: Development
+2025-03-04 23:19:06.657 -05:00 [INF] Content root path: C:\Users\Usuario\Documents\Backend\API\FullWebApi\fullwebapi.api
+2025-03-04 23:19:24.334 -05:00 [INF] Request starting HTTP/1.1 POST http://localhost:5232/api/auth/login - application/json 54
+2025-03-04 23:19:24.356 -05:00 [WRN] Failed to determine the https port for redirect.
+2025-03-04 23:19:24.371 -05:00 [INF] Executing endpoint 'HTTP: POST /api/auth/login'
+2025-03-04 23:19:24.873 -05:00 [INF] Executed DbCommand (30ms) [Parameters=[@__req_Username_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."Email", a."Password", a."Username"
+FROM "AdminUsers" AS a
+WHERE a."Username" = @__req_Username_0
+LIMIT 1
+2025-03-04 23:19:24.987 -05:00 [INF] User logged successfully. Username: gabriel
+2025-03-04 23:19:24.990 -05:00 [INF] Executed endpoint 'HTTP: POST /api/auth/login'
+2025-03-04 23:19:24.995 -05:00 [INF] Request finished HTTP/1.1 POST http://localhost:5232/api/auth/login - 200 null application/json; charset=utf-8 661.7626ms
+2025-03-04 23:19:34.842 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/users - null null
+2025-03-04 23:19:34.870 -05:00 [INF] Executing endpoint 'HTTP: GET /api/user/users'
+2025-03-04 23:19:34.881 -05:00 [INF] Getting all users
+2025-03-04 23:19:34.882 -05:00 [INF] Cache miss for key: allUsers
+2025-03-04 23:19:34.894 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+2025-03-04 23:19:34.901 -05:00 [INF] Cache set for key: allUsers
+2025-03-04 23:19:34.902 -05:00 [INF] All users retrieved successfully
+2025-03-04 23:19:34.907 -05:00 [INF] Executed endpoint 'HTTP: GET /api/user/users'
+2025-03-04 23:19:34.907 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/users - 200 null application/json; charset=utf-8 66.2661ms
+2025-03-04 23:19:44.568 -05:00 [INF] Request starting HTTP/1.1 GET http://localhost:5232/api/user/1 - null null
+2025-03-04 23:19:44.574 -05:00 [INF] Executing endpoint 'HTTP: GET api/user/{id}'
+2025-03-04 23:19:44.578 -05:00 [INF] Searching user with id: 1
+2025-03-04 23:19:44.579 -05:00 [INF] Cache miss for key: user1
+2025-03-04 23:19:44.618 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Email", u."Password", u."Username"
+FROM "Users" AS u
+WHERE u."Id" = @__id_0
+LIMIT 1
+2025-03-04 23:19:44.620 -05:00 [INF] Cache set for key: user1
+2025-03-04 23:19:44.621 -05:00 [INF] User found with id: 1
+2025-03-04 23:19:44.622 -05:00 [INF] Executed endpoint 'HTTP: GET api/user/{id}'
+2025-03-04 23:19:44.623 -05:00 [INF] Request finished HTTP/1.1 GET http://localhost:5232/api/user/1 - 200 null application/json; charset=utf-8 55.1476ms

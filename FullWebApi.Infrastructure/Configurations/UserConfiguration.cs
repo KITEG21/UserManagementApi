@@ -15,8 +15,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
     //Sets the primary key
     builder.HasKey(x => x.Id);
 
-    #region Properties settings
-
     builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
     builder.Property(x => x.Username)
@@ -29,6 +27,5 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 
     builder.Property(x => x.Password).IsRequired();
     
-    #endregion
   }     
 }

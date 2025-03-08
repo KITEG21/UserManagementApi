@@ -28,6 +28,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FullWebApi.Application\FullWebApi.Application.csproj" />
+    <ProjectReference Include="..\FullWebApi.Infrastructure\FullWebApi.Infrastructure.csproj" />
+
   </ItemGroup>
 
   <ItemGroup>

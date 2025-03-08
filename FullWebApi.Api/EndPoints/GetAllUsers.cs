@@ -4,26 +4,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using FastEndpoints;
 using FullWebApi.Application.Interfaces;
+using FullWebApi.Application.Services;
 using FullWebApi.Domain.Dtos;
 using FullWebApi.Infrastructure.Data;
+using FullWebApi.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace FullWebApi.Api.EndPoints;
 
 public class GetAllUsers : EndpointWithoutRequest<List<UserDto>>
 {
-  private readonly AppDBContext _context;
+
   private readonly IUserServices _userServices;
-  public GetAllUsers(AppDBContext context, IUserServices userServices)
+  public GetAllUsers(IUserServices userServices)
   {
-    _context = context;
     _userServices = userServices;
   }
 
   public override void Configure()
   {
     Get("/api/user/users");
-    Roles("Admin");
+    AllowAnonymous();
   }
 
   public override async Task HandleAsync(CancellationToken ct)

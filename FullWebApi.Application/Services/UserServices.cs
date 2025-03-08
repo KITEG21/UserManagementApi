@@ -9,119 +9,103 @@ using FullWebApi.Application.Mappings;
 using FullWebApi.Domain.Dtos;
 using FullWebApi.Domain.Models;
 using FullWebApi.Domain.ModelsValidator;
-using FullWebApi.Infrastructure.Data;
-using LanguageExt;
-using LanguageExt.Pipes;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Distributed;
-using Microsoft.Extensions.Caching.Memory;
+using FluentValidation;
 using Serilog;
+
+
 
 namespace FullWebApi.Application.Services;
 
 public class UserServices : IUserServices
 {
-  private readonly AppDBContext _context;
-  private readonly UserMapper _mapper;
-  private readonly IMemoryCache _cache;
-  public UserServices(AppDBContext context, UserMapper mapper, IMemoryCache cache)
+  private readonly IUnitOfWork _unitOfWork;
+
+  public UserServices(IUnitOfWork unitOfWork)
   {
-    _context = context;
-    _mapper = mapper;
-    _cache = cache;
+    _unitOfWork = unitOfWork;
   }
 
-  public async Task<List<UserDto>?> GetAllUsers()
-  {
-    var cacheKey = "allUsers";
-    if(_cache.TryGetValue(cacheKey, out List<UserDto>? cachedUsers)){
-      Log.Information("Cache hit for key: {CacheKey}", cacheKey);
-      return cachedUsers;
+    public async Task<bool> DeleteUser(int id)
+    {
+      Log.Information("Attempting to delete user with ID: {id}", id);
+
+      var result = await _unitOfWork._userRepository.DeleteUser(id);
+      if (!result)
+      {
+        Log.Warning($"Failed to delete user with ID: {id}");
+      }
+      return result;
     }
 
-    Log.Information("Cache miss for key: {CacheKey}", cacheKey);
+    public async Task<List<UserDto>> GetAllUsers()
+    {
+      Log.Information("Getting all users");
+      var users = await _unitOfWork._userRepository.GetAllUsers();
 
-    var users = await _context.Users.ToListAsync(); 
-    var usersList = users.Select(user => _mapper.UserToUserDto(user)).ToList();
-
-    if(users == null){
-      return null;
-    }   
-
-    MemoryCacheEntryOptions cacheEntryOptions = new MemoryCacheEntryOptions()
-      .SetSlidingExpiration(TimeSpan.FromMinutes(5))
-      .SetAbsoluteExpiration(TimeSpan.FromMinutes(60));
-
-    _cache.Set(cacheKey, usersList, cacheEntryOptions);
-    Log.Information("Cache set for key: {CacheKey}", cacheKey);
-
-    return usersList;
-  }
-
-  public async Task<User> GetUser(int id)
-  {
-    var cacheKey = $"user{id}";
-    if(_cache.TryGetValue(cacheKey, out User? cachedUser) && cachedUser != null){
-      Log.Information("Cache hit for key: {CacheKey}", cacheKey);
-      return cachedUser;
+      if(users != null && users.Any()){
+        Log.Information("All users retrieved successfully");
+      }
+      else{
+        Log.Information("No users found");
+      }
+      return users;
     }
 
-    Log.Information("Cache miss for key: {CacheKey}", cacheKey);
-    User? user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id) ?? throw new Exception("User not found");
+    public async Task<User> GetUser(int id)
+    {
+      Log.Information("Searching user with id: {id}",id);
+      var user = await _unitOfWork._userRepository.GetUser(id);
 
-    MemoryCacheEntryOptions cacheEntryOptions = new MemoryCacheEntryOptions() 
-      .SetSlidingExpiration(TimeSpan.FromMinutes(5))
-      .SetAbsoluteExpiration(TimeSpan.FromMinutes(60));
-
-    _cache.Set(cacheKey, cachedUser, cacheEntryOptions);
-    Log.Information("Cache set for key: {CacheKey}", cacheKey);
-    return user;
-  }
-
-  public async Task<User> SignUpUser(User req)
-  {    
-    //Creation of new user for the DB
-    User newUser = req;
-
-    //Saving the newUser into DB
-    await _context.Users.AddAsync(newUser);
-    await _context.SaveChangesAsync();     
-            
-    //Creating a userDto to return the info
-    return newUser;         
-  }
-
-// Delete user by ID
-  public async Task<bool> DeleteUser(int id)
-  {
-    var user = await _context.Users.FindAsync(id);
-    if (user == null){
-      return false;
+      if(user != null){
+        Log.Information("User found with id: {id}", id);
+      }
+      else{
+        Log.Information("User not found with id: {id}", id);
+      }
+      return user;
     }
 
-    _context.Users.Remove(user);
-    await _context.SaveChangesAsync();
-    return true;
+    public async Task<(User? User, object? ErrorResponse)> SignUpUser(User req)
+    {
+        UserValidator userValidator = new();
+        ValidationResult validationResult = userValidator.Validate(req);
+
+      if(!validationResult.IsValid)
+      {
+      var errorMessages = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+      var errorResponse = new
+      {
+        StatusCode = 400,
+        Errors = errorMessages
+      };
+        Log.Information("Create user attempt failed: Invalid credentials for new user");
+        return (null, errorResponse);
+      }
+      else
+      {
+        var newUser = await _unitOfWork._userRepository.SignUpUser(req);
+        if(newUser == null){
+          var errorResponse = new
+          {
+            StatusCode = 400,
+            Errors = "Failed to create a new user"
+          };
+          Log.Information("Create user attempt failed: Failed to create a new user");
+          return (null, errorResponse);
+        }
+        Log.Information("New user created. Username : {username}", newUser.Username);
+        return (newUser, null);
+      }
     }
 
-  // Update user details
-  public async Task<User> UpdateUser(User req)
-  {
-    var updatedUser = await _context.Users.FirstOrDefaultAsync(x=> x.Id == req.Id);
-   
-    if (updatedUser == null){
-      throw new Exception("User not found");
+    public Task<User> UpdateUser(User user)
+    {
+      Log.Information("Attempting to update user with ID: {id}", user.Id);
+      var updatedUser = _unitOfWork._userRepository.UpdateUser(user);
+
+      if(updatedUser == null){
+        Log.Warning("Failed to update user with ID: {id}", user.Id);
+      }
+      return updatedUser;
     }
-
-   updatedUser.Username = req.Username;
-   updatedUser.Email = req.Email;
-   updatedUser.Password = req.Password;
-
-    await _context.SaveChangesAsync();
-    return updatedUser;
-  }  
-
 }

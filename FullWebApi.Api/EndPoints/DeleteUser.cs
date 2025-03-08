@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FastEndpoints;
 using FullWebApi.Application.Interfaces;
+using FullWebApi.Application.Services;
 using FullWebApi.Domain.Models.Auth;
 using FullWebApi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -13,12 +14,9 @@ namespace FullWebApi.Api.EndPoints;
 
 public class DeleteUser : Endpoint<DeleteUserRequest>
 {
-    private readonly AppDBContext _context;
-    private readonly IUserServices _userServices;
-
-    public DeleteUser(AppDBContext context, IUserServices userServices)
+  private readonly IUserServices _userServices;
+    public DeleteUser(IUserServices userServices)
     {
-      _context = context;
       _userServices = userServices;
     }
 
