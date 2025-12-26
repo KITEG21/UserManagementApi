@@ -40,6 +40,7 @@ public class UserServicesTest
     Assert.NotNull(result);
     Assert.Equal(5, result.Count());         
   }
+  
   [Fact]
   public async Task GetUser_Should_Return_User()
   {
@@ -76,14 +77,18 @@ public class UserServicesTest
     Assert.Equal(user.Username, result.Username);
     Assert.Equal(user.Email, result.Email);
   }
+  
   [Fact]
   public async Task CreateUser_Should_Return_NewUser()
   {
     var newUser = _fixture.Create<User>();
-    _mockUserServices.Setup(service => service.SignUpUser(newUser)).ReturnsAsync(newUser);
+    var expectedResult = (User: newUser, ErrorResponse: (object?)null);
+    _mockUserServices.Setup(service => service.SignUpUser(newUser)).ReturnsAsync(expectedResult);
+    
     var result = await _mockUserServices.Object.SignUpUser(newUser);
 
-    Assert.NotNull(result);
-    Assert.Equal(newUser.Id, result.Id);
+    Assert.NotNull(result.User);
+    Assert.Null(result.ErrorResponse);
+    Assert.Equal(newUser.Id, result.User.Id);
   }
 }

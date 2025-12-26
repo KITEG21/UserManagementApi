@@ -49,11 +49,21 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// Add Swagger
+// Add Swagger (enabled for all environments)
 builder.Services.AddEndpointsApiExplorer(); 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "FullWebApi API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo 
+    { 
+        Title = "UserManagement API", 
+        Version = "v1",
+        Description = "A secure RESTful API for user management with JWT authentication",
+        Contact = new OpenApiContact
+        {
+            Name = "Your Name",
+            Email = "your.email@example.com"
+        }
+    });
 
     // Add JWT Authentication to Swagger
     var securityScheme = new OpenApiSecurityScheme
@@ -62,7 +72,7 @@ builder.Services.AddSwaggerGen(c =>
         Description = "Enter JWT Bearer token **_only_**",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.Http,
-        Scheme = "bearer", // must be lower case
+        Scheme = "bearer",
         BearerFormat = "JWT",
         Reference = new OpenApiReference
         {
@@ -90,8 +100,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<SeederRunner>();
 builder.Services.AddScoped<ISeeder, UserSeeder>();
 builder.Services.AddMemoryCache();
-builder.Services.AddInfrastructure();//User repository services
-
+builder.Services.AddInfrastructure();
 
 // Configure Database Context
 builder.Services.AddDbContext<AppDBContext>(options =>
@@ -100,18 +109,25 @@ builder.Services.AddDbContext<AppDBContext>(options =>
 
 var app = builder.Build();
 
-//Adding seeders services
-using(var scope = app.Services.CreateScope()){
+// Adding seeders services
+using(var scope = app.Services.CreateScope())
+{
     var seederRunner = scope.ServiceProvider.GetRequiredService<SeederRunner>();
     await seederRunner.RunAsync(); 
 }
 
 // Configure the HTTP request pipeline
+// Enable Swagger in all environments for Azure
+app.UseSwagger();
+app.UseSwaggerUI(c => 
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "UserManagement API v1");
+    c.RoutePrefix = string.Empty; // Set Swagger UI at the root (https://yourapp.azurewebsites.net/)
+});
+
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FullWebApi API v1"));
 }
 
 app.UseHttpsRedirection();

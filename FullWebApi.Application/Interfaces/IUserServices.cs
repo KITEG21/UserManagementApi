@@ -12,8 +12,8 @@ namespace FullWebApi.Application.Interfaces;
   public interface IUserServices
   {
     public Task<List<UserDto>?> GetAllUsers();
-    public Task<User> GetUser(int id);
-    public Task<(User User, object ErrorResponse)> SignUpUser(User req);
+    public Task<User?> GetUser(int id);
+    public Task<(User? User, object ErrorResponse)> SignUpUser(User req);
     public Task<bool> DeleteUser(int id);
-    public Task<User> UpdateUser(User user);
+    public Task<User?> UpdateUser(User user);
   }

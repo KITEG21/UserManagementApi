@@ -12,8 +12,6 @@ using FullWebApi.Domain.ModelsValidator;
 using FluentValidation;
 using Serilog;
 
-
-
 namespace FullWebApi.Application.Services;
 
 public class UserServices : IUserServices
@@ -48,10 +46,10 @@ public class UserServices : IUserServices
       else{
         Log.Information("No users found");
       }
-      return users;
+      return users ?? new List<UserDto>();
     }
 
-    public async Task<User> GetUser(int id)
+    public async Task<User?> GetUser(int id)
     {
       Log.Information("Searching user with id: {id}",id);
       var user = await _unitOfWork._userRepository.GetUser(id);
@@ -98,7 +96,7 @@ public class UserServices : IUserServices
       }
     }
 
-    public Task<User> UpdateUser(User user)
+    public Task<User?> UpdateUser(User user)
     {
       Log.Information("Attempting to update user with ID: {id}", user.Id);
       var updatedUser = _unitOfWork._userRepository.UpdateUser(user);
