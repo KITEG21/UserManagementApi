@@ -4,42 +4,44 @@ using System.Linq;
 using System.Threading.Tasks;
 using FastEndpoints;
 using FullWebApi.Application.Interfaces;
-using FullWebApi.Application.Services;
+using FullWebApi.Application.Mappings;
 using FullWebApi.Domain.Dtos;
-using FullWebApi.Infrastructure.Data;
+using FullWebApi.Domain.Models;
+using Serilog;
 
 namespace FullWebApi.Api.EndPoints;
 
-public class GetUserById : Endpoint<UserDto>
+public class GetUserById : EndpointWithoutRequest<UserDto>
 {
   private readonly IUserServices _userServices;
+  private readonly UserMapper _mapper;
 
-  public GetUserById(IUserServices userServices)
+  public GetUserById(IUserServices userServices, UserMapper mapper)
   {
     _userServices = userServices;
+    _mapper = mapper;
   }
-
 
   public override void Configure()
   {
-    Get("api/user/{id}");
+    Get("/api/user/{id}");
     Roles("Admin");
+    Tags("Users");
   }
 
-  public override async Task HandleAsync(UserDto req ,CancellationToken ct)
+  public override async Task HandleAsync(CancellationToken ct)
   {
-    var id = Route<int>("id");
+    var id = Route<Guid>("id");
     
-    try
+    var user = await _userServices.GetUser(id);
+    
+    if (user == null)
     {
-      var user = await _userServices.GetUser(id);
-      await SendOkAsync(user, ct);  
-      return;
+      Log.Information("User not found with id: {id}", id);
+      ThrowError("User not found", 404);
     }
-    catch (System.Exception)
-    {
-      await SendAsync("The required user doesn't exist", 404, cancellation: ct);
-      return;
-    } 
+    
+    var userDto = _mapper.UserToUserDto(user);
+    await Send.OkAsync(userDto, ct);
   }
 }

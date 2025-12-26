@@ -12,10 +12,9 @@ using FluentValidation.Results;
 using Microsoft.AspNetCore.Identity;
 using Serilog;
 
-
 namespace FullWebApi.Api.EndPoints.Auth;
 
-public class SignUpEndpoint : Endpoint<SignUpRequest>
+public class SignUpEndpoint : Endpoint<SignUpRequest, SignUpResponse>
 {
   private readonly AppDBContext _context;
   private readonly ITokenServices _tokenService;
@@ -32,6 +31,7 @@ public class SignUpEndpoint : Endpoint<SignUpRequest>
   {
     Post("/api/auth/signup");
     AllowAnonymous();
+    Tags("Authentication");
   }
 
   public override async Task HandleAsync(SignUpRequest req, CancellationToken ct)
@@ -42,28 +42,19 @@ public class SignUpEndpoint : Endpoint<SignUpRequest>
     // Check if the admin user already exists
     if (await _context.AdminUsers.AnyAsync(u => u.Username == req.Username || u.Email == req.Email, ct))
     {
-      var errorResponse = new
-      {
-        StatusCode = 409,
-        Errors = "User already exist"
-      };  
-      await SendAsync(errorResponse, 409, ct);
-      Log.Information("SignUp attempt failed: User already exist. Username: {Username}, Email: {Email}", req.Username, req.Email);
-      return;
+      Log.Information("SignUp attempt failed: User already exists. Username: {Username}, Email: {Email}", req.Username, req.Email);
+      ThrowError("User already exists", 409);
     }
 
-    if(!result.IsValid)
+    if (!result.IsValid)
     {
       var errorMessages = result.Errors.Select(e => e.ErrorMessage).ToList();
-      var errorResponse = new
+      Log.Information("SignUp attempt failed: Validation errors. Username: {Username}, Email: {Email}", req.Username, req.Email);
+      foreach (var error in result.Errors)
       {
-        StatusCode = 400,
-        Errors = errorMessages
-      };
-
-      await SendAsync(errorResponse, 400, ct);
-      Log.Information("SignUp attempt failed: Validation errors. Username: {Username}, Email: {Email}, Errors: {Errors}", req.Username, req.Email, errorMessages);
-      return;
+        AddError(error.PropertyName, error.ErrorMessage);
+      }
+      ThrowIfAnyErrors();
     }
 
     // Create a new admin user
@@ -71,17 +62,15 @@ public class SignUpEndpoint : Endpoint<SignUpRequest>
     {
       Username = req.Username,
       Email = req.Email,
+      Password = _passwordHasher.HashPassword(new AdminUser(), req.Password)
     };
-    //Hashes the password
-    adminUser.Password = _passwordHasher.HashPassword(adminUser, req.Password);
 
     _context.AdminUsers.Add(adminUser);
     await _context.SaveChangesAsync(ct);
 
     // Generate JWT token
     var token = _tokenService.GenerateToken(adminUser.Username, "Admin");
-    await SendAsync(new SignUpResponse { Token = token }, cancellation: ct);
-
-    Log.Information("New admin user signed up successfully");
- }
+    Log.Information("New admin user signed up successfully. Username: {Username}", adminUser.Username);
+    await Send.CreatedAtAsync<LoginEndpoint>(null, new SignUpResponse { Token = token }, cancellation: ct);
+  }
 }

@@ -4,76 +4,58 @@ using System.Linq;
 using System.Threading.Tasks;
 using FastEndpoints;
 using FullWebApi.Application.Interfaces;
-using FullWebApi.Application.Services;
 using FullWebApi.Domain.Models.Auth;
 using FullWebApi.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
-namespace FullWebApi.Api.EndPoints.Auth
+namespace FullWebApi.Api.EndPoints.Auth;
+
+public class LoginEndpoint : Endpoint<LoginRequest, LoginResponse>
 {
-    public class LoginEndpoint : Endpoint<LoginRequest>
+    private readonly ITokenServices _tokenServices;
+    private readonly AppDBContext _context;
+    private readonly IPasswordHasher<LoginRequest> _passwordHasher;
+
+    public LoginEndpoint(ITokenServices tokenServices, AppDBContext context, IPasswordHasher<LoginRequest> passwordHasher)
     {
-        private readonly ITokenServices _tokenServices;
-        private readonly AppDBContext _context;
-        private readonly IPasswordHasher<LoginRequest> _passwordHasher;
+        _tokenServices = tokenServices;
+        _context = context;
+        _passwordHasher = passwordHasher;
+    }
 
-        public LoginEndpoint(ITokenServices tokenServices, AppDBContext context, IPasswordHasher<LoginRequest> passwordHasher)
+    public override void Configure()
+    {
+        Post("/api/auth/login");
+        AllowAnonymous();
+        Tags("Authentication");
+    }
+
+    private bool CheckPassword(LoginRequest req, string hashedPassword, string passwordToCheck)
+    {
+        var result = _passwordHasher.VerifyHashedPassword(req, hashedPassword, passwordToCheck);
+        return result != PasswordVerificationResult.Failed;
+    }
+
+    public override async Task HandleAsync(LoginRequest req, CancellationToken ct)
+    {
+        var user = await _context.AdminUsers.FirstOrDefaultAsync(x => x.Username == req.Username, ct);
+
+        if (user == null)
         {
-            _tokenServices = tokenServices;
-            _context = context;
-            _passwordHasher = passwordHasher;
+            Log.Information("Login attempt failed: User not found. Username: {Username}", req.Username);
+            ThrowError("Invalid credentials", 401);
         }
 
-        public override void Configure()
+        if (!CheckPassword(req, user!.Password, req.Password))
         {
-            Post("/api/auth/login");
-            AllowAnonymous();
+            Log.Information("Login attempt failed: Invalid password. Username: {Username}", req.Username);
+            ThrowError("Invalid credentials", 401);
         }
 
-        bool CheckPassword(LoginRequest req, string hashedPassword, string passwordToCheck){
-
-            var result = _passwordHasher.VerifyHashedPassword(req, hashedPassword, passwordToCheck);
-            if(result == PasswordVerificationResult.Failed){
-                return false;
-            }
-            return true;
-        }
-        public override async Task HandleAsync(LoginRequest req, CancellationToken ct)
-        {
-            
-            var user = await _context.AdminUsers.FirstOrDefaultAsync(x => x.Username == req.Username, ct);
-
-            if(user == null)
-            {
-                var errorResponse = new 
-                {
-                    StatusCode = 401,
-                    Error = "Invalid credentials"
-                };
-
-
-                await SendAsync(errorResponse, 401, ct);
-                Log.Information("Login attempt failed: Invalid credentials. Username: {Username}, Password: {Password}", req.Username, req.Password);
-                return;
-            }
-            if(!CheckPassword(req, user.Password, req.Password))
-            {
-                var errorResponse = new 
-                {
-                    StatusCode = 401,
-                    Error = "Invalid credentials"
-                };
-
-                await SendAsync(errorResponse, 401, ct);
-                Log.Information("Login attempt failed: Invalid credentials. Username: {Username}, Password: {Password}", req.Username, req.Password);
-                return;
-            }
-
-            var token = _tokenServices.GenerateToken(req.Username, "Admin");
-            await SendAsync(new LoginResponse {Token = token}, cancellation: ct);
-            Log.Information("User logged successfully. Username: {Username}", user.Username);
-        }
+        var token = _tokenServices.GenerateToken(req.Username, "Admin");
+        Log.Information("User logged in successfully. Username: {Username}", user.Username);
+        await Send.OkAsync(new LoginResponse { Token = token }, ct);
     }
 }

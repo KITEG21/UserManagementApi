@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using FastEndpoints;
 using FullWebApi.Application.Interfaces;
-using FullWebApi.Application.Services;
+using FullWebApi.Application.Mappings;
+using FullWebApi.Domain.Dtos;
 using FullWebApi.Domain.Models;
-using FullWebApi.Infrastructure.Data;
 using Serilog;
 
 namespace FullWebApi.Api.EndPoints;
@@ -14,39 +14,36 @@ namespace FullWebApi.Api.EndPoints;
 public class UpdateUser : Endpoint<User>
 {
   private readonly IUserServices _userServices;
+  private readonly UserMapper _mapper;
 
-  public UpdateUser(IUserServices userServices)
+  public UpdateUser(IUserServices userServices, UserMapper mapper)
   {
     _userServices = userServices;
+    _mapper = mapper;
   }
 
   public override void Configure()
   {
-    Put("api/user/updateuser/{id}");
+    Put("/api/user/update/{id}");
     Roles("Admin");
+    Tags("Users");
   }
 
   public override async Task HandleAsync(User req, CancellationToken ct)
   {
-    var id = Route<int>("id");
+    var id = Route<Guid>("id");
+    req.Id = id; // Ensure we update the correct user from route
 
-    try
+    var userUpdate = await _userServices.UpdateUser(req);
+    
+    if (userUpdate == null)
     {
-      var userUpdate = await _userServices.UpdateUser(req);
-      await SendAsync(userUpdate);
-      return;
+      Log.Information("Update user failed: User not found. Id: {id}", id);
+      ThrowError("User not found", 404);
     }
-    catch (System.Exception)
-    {
-      var errorResponse = new 
-      {
-        StatusCode = 404,
-        Error = "The required user doesn't exist"
-      };
-
-      await SendAsync(errorResponse, 404, ct);
-      Log.Information("Update user failed attempt: The required user Id coulnd't be find. Id: {id}", req.Id);
-      return;
-    }
+    
+    Log.Information("User updated successfully. Id: {id}", id);
+    var userDto = _mapper.UserToUserDto(userUpdate);
+    await Send.OkAsync(userDto, ct);
   }
 }

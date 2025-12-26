@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FullWebApi.Application.Interfaces;
 using FullWebApi.Application.Mappings;
 using FullWebApi.Domain.Dtos;
+using FullWebApi.Domain.Enums;
 using FullWebApi.Domain.Models;
 using FullWebApi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,7 @@ internal class UserRepository : IUserRepository
   private readonly AppDBContext _context;
   private readonly UserMapper _mapper;
   private readonly IMemoryCache _cache;
+  
   public UserRepository(AppDBContext context, UserMapper mapper, IMemoryCache cache)
   {
     _context = context;
@@ -25,7 +27,7 @@ internal class UserRepository : IUserRepository
     _cache = cache;
   }
 
-    public async Task<List<UserDto>?> GetAllUsers()
+  public async Task<List<UserDto>?> GetAllUsers()
   {
     var cacheKey = "allUsers";
     if(_cache.TryGetValue(cacheKey, out List<UserDto>? cachedUsers)){
@@ -52,7 +54,69 @@ internal class UserRepository : IUserRepository
     return usersList;
   }
 
-  public async Task<User> GetUser(int id)
+  public async Task<(List<UserDto> Users, int TotalCount)> GetUsersAsync(UserSearchRequest request)
+  {
+    var query = _context.Users.AsQueryable();
+
+    // Apply search filter
+    if (!string.IsNullOrWhiteSpace(request.SearchTerm))
+    {
+      var searchTerm = request.SearchTerm.ToLower();
+      query = query.Where(u => 
+        u.Username.ToLower().Contains(searchTerm) || 
+        u.Email.ToLower().Contains(searchTerm));
+    }
+
+    // Apply status filter
+    if (request.Status.HasValue)
+    {
+      query = query.Where(u => u.Status == request.Status.Value);
+    }
+
+    // Apply date filters
+    if (request.CreatedAfter.HasValue)
+    {
+      query = query.Where(u => u.CreatedAt >= request.CreatedAfter.Value);
+    }
+
+    if (request.CreatedBefore.HasValue)
+    {
+      query = query.Where(u => u.CreatedAt <= request.CreatedBefore.Value);
+    }
+
+    // Get total count before pagination
+    var totalCount = await query.CountAsync();
+
+    // Apply sorting
+    query = request.SortBy?.ToLower() switch
+    {
+      "username" => request.SortOrder?.ToLower() == "asc" 
+        ? query.OrderBy(u => u.Username) 
+        : query.OrderByDescending(u => u.Username),
+      "email" => request.SortOrder?.ToLower() == "asc" 
+        ? query.OrderBy(u => u.Email) 
+        : query.OrderByDescending(u => u.Email),
+      "status" => request.SortOrder?.ToLower() == "asc" 
+        ? query.OrderBy(u => u.Status) 
+        : query.OrderByDescending(u => u.Status),
+      _ => request.SortOrder?.ToLower() == "asc" 
+        ? query.OrderBy(u => u.CreatedAt) 
+        : query.OrderByDescending(u => u.CreatedAt)
+    };
+
+    // Apply pagination
+    var users = await query
+      .Skip((request.Page - 1) * request.PageSize)
+      .Take(request.PageSize)
+      .ToListAsync();
+
+    var userDtos = users.Select(user => _mapper.UserToUserDto(user)).ToList();
+
+    Log.Information("Retrieved {Count} users out of {Total} total", userDtos.Count, totalCount);
+    return (userDtos, totalCount);
+  }
+
+  public async Task<User?> GetUser(Guid id)
   {
     var cacheKey = $"user{id}";
     if(_cache.TryGetValue(cacheKey, out User? cachedUser) && cachedUser != null){
@@ -61,8 +125,9 @@ internal class UserRepository : IUserRepository
     }
 
     Log.Information("Cache miss for key: {CacheKey}", cacheKey);
-    User? user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id) ?? throw new Exception("User not found");
+    User? user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
     if(user == null){
+      Log.Information("User not found with id: {id}", id);
       return null;
     }
     
@@ -77,19 +142,20 @@ internal class UserRepository : IUserRepository
 
   public async Task<User> SignUpUser(User req)
   {    
-    //Creation of new user for the DB
-    User newUser = req;
+    req.Id = Guid.NewGuid();
+    req.CreatedAt = DateTime.UtcNow;
+    req.Status = UserStatus.PendingVerification;
     
-    //Saving the newUser into DB
-    await _context.Users.AddAsync(newUser);
+    await _context.Users.AddAsync(req);
     await _context.SaveChangesAsync();     
             
-    //Creating a userDto to return the info
-    return newUser;         
+    // Clear cache when new user is added
+    _cache.Remove("allUsers");
+    
+    return req;         
   }
 
-// Delete user by ID
-  public async Task<bool> DeleteUser(int id)
+  public async Task<bool> DeleteUser(Guid id)
   {
     var user = await _context.Users.FindAsync(id);
     if (user == null){
@@ -97,24 +163,58 @@ internal class UserRepository : IUserRepository
     }
 
     _context.Users.Remove(user);
-    await _context.SaveChangesAsync();     
+    await _context.SaveChangesAsync();
+    
+    // Clear cache
+    _cache.Remove("allUsers");
+    _cache.Remove($"user{id}");
+    
     return true;
-    }
+  }
 
-  // Update user details
-  public async Task<User> UpdateUser(User req)
+  public async Task<User?> UpdateUser(User req)
   {
-    var updatedUser = await _context.Users.FirstOrDefaultAsync(x=> x.Id == req.Id);
+    var updatedUser = await _context.Users.FirstOrDefaultAsync(x => x.Id == req.Id);
    
     if (updatedUser == null){
-      throw new Exception("User not found");
+      Log.Information("User not found with id: {id}", req.Id);
+      return null;
     }
 
-   updatedUser.Username = req.Username;
-   updatedUser.Email = req.Email;
-   updatedUser.Password = req.Password;
+    updatedUser.Username = req.Username;
+    updatedUser.Email = req.Email;
+    updatedUser.Password = req.Password;
+    updatedUser.UpdatedAt = DateTime.UtcNow;
 
-    await _context.SaveChangesAsync();     
+    await _context.SaveChangesAsync();
+    
+    // Clear cache
+    _cache.Remove("allUsers");
+    _cache.Remove($"user{req.Id}");
+    
     return updatedUser;
-  }  
+  }
+
+  public async Task<bool> UpdateUserStatus(Guid userId, UserStatus status, string? reason)
+  {
+    var user = await _context.Users.FindAsync(userId);
+    if (user == null)
+    {
+      Log.Information("User not found with id: {id}", userId);
+      return false;
+    }
+
+    user.Status = status;
+    user.StatusReason = reason;
+    user.UpdatedAt = DateTime.UtcNow;
+
+    await _context.SaveChangesAsync();
+    
+    // Clear cache
+    _cache.Remove("allUsers");
+    _cache.Remove($"user{userId}");
+    
+    Log.Information("User {UserId} status updated to {Status}", userId, status);
+    return true;
+  }
 }

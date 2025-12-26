@@ -1,62 +1,62 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using FastEndpoints;
-using FluentValidation.Results;
 using FullWebApi.Application.Interfaces;
-using FullWebApi.Application.Services;
+using FullWebApi.Application.Mappings;
 using FullWebApi.Domain.Dtos;
 using FullWebApi.Domain.Models;
-using FullWebApi.Domain.ModelsValidator;
 using FullWebApi.Infrastructure.Data;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace FullWebApi.Api.EndPoints;
-public class CreateUser : Endpoint<User>
+
+public class CreateUser : Endpoint<CreateUserDto>
 {
-  private readonly IUserRepository _userRepository;
   private readonly IUserServices _userServices;
   private readonly AppDBContext _context;
+  private readonly UserMapper _mapper;
 
-  public CreateUser(AppDBContext context, IUserRepository userRepository, IUserServices userServices)
+  public CreateUser(AppDBContext context, IUserServices userServices, UserMapper mapper)
   {
     _context = context;
-    _userRepository = userRepository;
     _userServices = userServices;
+    _mapper = mapper;
   }
 
   public override void Configure()
   {
-    Post("/api/user/signup");
+    Post("/api/user/post");
     Roles("Admin");
+    Tags("Users");
+    Summary(s =>
+    {
+      s.Summary = "Create a new user";
+      s.Description = "Creates a new user with PendingVerification status. Only Username, Email, and Password are required.";
+    });
   }
 
-  public override async Task HandleAsync(User req, CancellationToken ct)
+  public override async Task HandleAsync(CreateUserDto req, CancellationToken ct)
   { 
-    if(await _context.Users.AnyAsync(u => u.Username == req.Username && u.Email == req.Email))
+    if (await _context.Users.AnyAsync(u => u.Username == req.Username || u.Email == req.Email, ct))
     {
-      var errorResponse = new 
-      {
-        StatusCode = 409,
-        Errors = "User already exist"
-      };
-
-      await SendAsync(errorResponse, 409, ct);
-      Log.Information("Create user attemp failed: User already exist. Username: {username} Email: {email}", req.Username, req.Email);
-      return;
+      Log.Information("Create user failed: User already exists. Username: {username} Email: {email}", req.Username, req.Email);
+      ThrowError("User already exists", 409);
     }
-    var newUser = await _userServices.SignUpUser(req);
-    if(newUser.User == null){ 
-      await SendAsync(newUser.ErrorResponse, 400, ct);
-      return;
+    
+    var user = _mapper.CreateUserDtoToUser(req);
+    var result = await _userServices.SignUpUser(user);
+    
+    if (result.User == null)
+    { 
+      Log.Information("Create user failed: Validation errors");
+      ThrowError(result.ErrorResponse?.ToString() ?? "Failed to create user", 400);
     }
 
-    await SendAsync(newUser, 201, ct);
-    return;
+    Log.Information("User created successfully. Username: {username}", result.User.Username);
+    var userDto = _mapper.UserToUserDto(result.User);
+    await Send.CreatedAtAsync<GetUserById>(new { id = result.User.Id }, userDto, cancellation: ct);
   }  
 }

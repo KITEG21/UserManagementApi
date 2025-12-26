@@ -56,7 +56,7 @@ public class UserServicesTest
   [Fact] 
   public async Task DeleteUser_Should_Return_True_When_Successful()
   {
-    var userId = _fixture.Create<int>();
+    var userId = _fixture.Create<Guid>();
     _mockUserServices.Setup(service => service.DeleteUser(userId)).ReturnsAsync(true);
 
     var result = await _mockUserServices.Object.DeleteUser(userId);

@@ -26,7 +26,7 @@ public class UserSeeder : ISeeder
       {
         new AdminUser
         {
-          Id = 777,
+          Id = Guid.NewGuid(),
           Username = "admin",
           Email = "admin@localhost",
           Password = "admin",

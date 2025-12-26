@@ -14,4 +14,5 @@ public partial class UserMapper
 {
   public partial UserDto UserToUserDto(User user);
   public partial User UserDtoToUser(UserDto userDto);
+  public partial User CreateUserDtoToUser(CreateUserDto createUserDto);
 }
