@@ -24,7 +24,7 @@ public class UpdateUser : Endpoint<User>
 
   public override void Configure()
   {
-    Put("/api/user/update/{id}");
+    Put("/api/user/{id}");
     Roles("Admin");
     Tags("Users");
   }

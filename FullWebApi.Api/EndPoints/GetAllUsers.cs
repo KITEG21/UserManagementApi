@@ -32,7 +32,7 @@ public class GetAllUsers : Endpoint<GetAllUsersRequest, PaginatedResponse<UserDt
 
   public override void Configure()
   {
-    Get("/api/user/users");
+    Get("/api/users");
     AllowAnonymous();
     Tags("Users");
     Summary(s =>

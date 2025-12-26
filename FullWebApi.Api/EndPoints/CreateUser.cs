@@ -28,7 +28,7 @@ public class CreateUser : Endpoint<CreateUserDto>
 
   public override void Configure()
   {
-    Post("/api/user/post");
+    Post("/api/user");
     Roles("Admin");
     Tags("Users");
     Summary(s =>

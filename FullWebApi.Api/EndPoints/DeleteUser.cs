@@ -19,7 +19,7 @@ public class DeleteUser : EndpointWithoutRequest
 
   public override void Configure()
   {
-    Delete("/api/user/deleteuser/{id}");
+    Delete("/api/user/{id}");
     Roles("Admin");
     Tags("Users");
   }
