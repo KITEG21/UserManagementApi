@@ -137,15 +137,27 @@ app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "UserManagement API v1");
-    c.RoutePrefix = string.Empty; // serve swagger at site root
+    c.RoutePrefix = "swagger"; // serve swagger at site root
 });
 
 app.UseHttpsRedirection();
-app.UseFastEndpoints();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseFastEndpoints();
 
 // Use FastEndpoints Swagger
 app.UseSwaggerGen();
 
-app.Run();
+try
+{
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Host terminated unexpectedly");
+    throw;
+}
+finally
+{
+    Log.CloseAndFlush();
+}
